@@ -1,0 +1,8 @@
+using System;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Channels/Events/#RAWFILENAME#EventChannel", fileName = "New#RAWFILENAME#EventChannel")]
+public class #FILENAME# : GenericEventChannelSO<#RAWFILENAME#>
+{
+
+}

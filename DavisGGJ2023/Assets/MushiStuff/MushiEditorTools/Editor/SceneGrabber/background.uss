@@ -1,0 +1,6 @@
+.label {
+    background-color: rgba(53, 45, 41, 255);
+}
+
+.scene-list-button {
+}

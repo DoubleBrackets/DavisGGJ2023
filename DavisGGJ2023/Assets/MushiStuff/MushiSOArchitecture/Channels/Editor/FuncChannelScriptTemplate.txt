@@ -1,0 +1,8 @@
+using System;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Channels/Funcs/#RAWFILENAME#FuncChannel", fileName = "New#RAWFILENAME#FuncChannel")]
+public class #FILENAME# : GenericFuncChannelSO<#RAWFILENAME#>
+{
+    
+}

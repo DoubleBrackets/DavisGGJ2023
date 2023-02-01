@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
+         noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/Editor/SceneGrabber/background.uss?fileID=7433441132597879392&amp;guid=05c1af89dee07e348acfe30596d4be91&amp;type=3#background"/>
+    <ui:VisualElement name="Header" style="height: 57px;">
+        <ui:Label text="Scene Grabber" class="label"
+                  style="align-items: stretch; -unity-text-align: middle-center; -unity-font: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&amp;guid=e3265ab4bf004d28a9537516768c1c75&amp;type=3#LiberationSans&apos;); font-size: 13px; color: rgb(255, 255, 255); background-color: rgb(55, 52, 48); height: 70%; width: 50%; left: 0; top: 15%; right: 50%; bottom: 15%; position: relative;"/>
+        <ui:Button text="Refresh Scenes" display-tooltip-when-elided="true" name="RefreshSceneButton"
+                   style="top: 15%; bottom: 15%; right: 0; position: absolute; width: 50%; height: 70%;"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="SearchParameters" style="height: 35px;">
+        <ui:TextField picking-mode="Ignore" label="Search Path" name="SearchPath"/>
+    </ui:VisualElement>
+    <ui:ScrollView name="SceneList" class="label"/>
+</ui:UXML>
