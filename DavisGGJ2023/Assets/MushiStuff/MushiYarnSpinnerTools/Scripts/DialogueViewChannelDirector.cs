@@ -13,7 +13,6 @@ public class DialogueViewChannelDirector : DialogueViewBase
 {
     [ColorHeader("Invoking", ColorHeaderColor.InvokingChannels)]
     [SerializeField] private VoidEventChannelSO onDialogueStarted;
-
     [SerializeField] private VoidEventChannelSO onDialogueComplete;
     [SerializeField] private RunYarnLineEventChannelSO onRunDialogueLine;
     [SerializeField] private RunYarnLineEventChannelSO onLineInterrupt;

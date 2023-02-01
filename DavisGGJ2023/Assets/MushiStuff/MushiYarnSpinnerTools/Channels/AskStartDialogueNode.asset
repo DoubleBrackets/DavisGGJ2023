@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e9db131720d934c9d53f1c3089b987, type: 3}
+  m_Script: {fileID: 11500000, guid: 840a8ba9cd9ff7344a273c504e9175e1, type: 3}
   m_Name: AskStartDialogueNode
   m_EditorClassIdentifier: 
   description: 
