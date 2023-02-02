@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 062150f0c86cb044ba4aaef2afb4d943, type: 3}
-  m_Name: ProtagMovementProfile
+  m_Script: {fileID: 11500000, guid: 1741c8978acc02c4fad8c9a81f9a290f, type: 3}
+  m_Name: GetAllYarnVariables
   m_EditorClassIdentifier: 
   description: 
-  maxWalkSpeed: 5
-  walkAcceleration: 15
-  maxRunSpeed: 3.5
-  runAcceleration: 15
-  frictionAcceleration: 8

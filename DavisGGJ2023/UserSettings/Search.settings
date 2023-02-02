@@ -1,0 +1,118 @@
+trackSelection = true
+fetchPreview = true
+defaultFlags = 0
+keepOpen = false
+queryFolder = "Assets"
+onBoardingDoNotAskAgain = true
+showPackageIndexes = false
+showStatusBar = false
+scopes = {
+<<<<<<< HEAD
+	"last_search.7788661B" = ""
+	"OpenInspectorPreview.7788661B" = "0"
+	"currentGroup.7788661B" = "asset"
+}
+providers = {
+	find = {
+=======
+	"last_search.8BEC98E7" = "t:SpriteRenderer is:static"
+	"OpenInspectorPreview.8BEC98E7" = "0"
+	"currentGroup.8BEC98E7" = "scene"
+}
+providers = {
+	adb = {
+		active = false
+		priority = 2500
+		defaultAction = null
+	}
+	asset = {
+>>>>>>> BasicMechanics
+		active = true
+		priority = 25
+		defaultAction = null
+	}
+<<<<<<< HEAD
+	performance = {
+		active = false
+		priority = 100
+		defaultAction = null
+	}
+	store = {
+		active = true
+		priority = 100
+=======
+	store = {
+		active = true
+		priority = 100
+		defaultAction = null
+	}
+	find = {
+		active = true
+		priority = 25
+		defaultAction = null
+	}
+	log = {
+		active = false
+		priority = 210
+>>>>>>> BasicMechanics
+		defaultAction = null
+	}
+	packages = {
+		active = true
+		priority = 90
+		defaultAction = null
+	}
+<<<<<<< HEAD
+	adb = {
+		active = false
+		priority = 2500
+=======
+	performance = {
+		active = false
+		priority = 100
+>>>>>>> BasicMechanics
+		defaultAction = null
+	}
+	scene = {
+		active = true
+		priority = 50
+		defaultAction = null
+	}
+<<<<<<< HEAD
+	asset = {
+		active = true
+		priority = 25
+		defaultAction = null
+	}
+	log = {
+		active = false
+		priority = 210
+		defaultAction = null
+	}
+=======
+>>>>>>> BasicMechanics
+}
+objectSelectors = {
+}
+recentSearches = [
+<<<<<<< HEAD
+=======
+	"t:SpriteRenderer is:s"
+	"t"
+	"t:SpriteRenderer"
+>>>>>>> BasicMechanics
+]
+searchItemFavorites = [
+]
+savedSearchesSortOrder = 0
+showSavedSearchPanel = false
+expandedQueries = [
+]
+queryBuilder = false
+ignoredProperties = "id;name;classname;imagecontentshash"
+<<<<<<< HEAD
+helperWidgetCurrentArea = "all"
+=======
+helperWidgetCurrentArea = "h:"
+>>>>>>> BasicMechanics
+disabledIndexers = ""

@@ -29,7 +29,7 @@ public class ProtagWalking : ProtagState
 
     public override void FixedUpdateState()
     {
-        protagMover.PerformSimpleMovement(
+        protagMover.SimpleHorizontalMovement(
             inputState.movementVector,
             basicMovementProfile.MaxWalkSpeed,
             basicMovementProfile.WalkAcceleration,

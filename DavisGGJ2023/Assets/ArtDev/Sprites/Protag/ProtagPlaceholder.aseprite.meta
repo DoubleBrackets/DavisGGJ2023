@@ -15,8 +15,8 @@ ScriptedImporter:
     PixelsPerUnit: 16
     MeshType: 0
     ExtrudeEdges: 1
-    Pivot: 0
-    _pivot: {x: 0.5, y: 0.5}
+    Pivot: 9
+    _pivot: {x: 0.5, y: 0.35}
     GeneratePhysicsShape: 0
     WrapMode: 1
     FilterMode: 0
