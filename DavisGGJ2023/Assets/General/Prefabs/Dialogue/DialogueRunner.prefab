@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7594892366242736879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7594892366242736876}
+  - component: {fileID: 7594892366242736877}
+  - component: {fileID: 7594892366242736866}
+  - component: {fileID: 7594892366242736867}
+  - component: {fileID: 7594892366242736864}
+  m_Layer: 0
+  m_Name: DialogueRunner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7594892366242736876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7594892366242736879}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 320, y: 240, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7594892366242736877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7594892366242736879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yarnProject: {fileID: 7545569452688597077, guid: 1dca75d7ca0a17a41a0543a0c932df9b, type: 3}
+  _variableStorage: {fileID: 0}
+  dialogueViews:
+  - {fileID: 7594892366242736867}
+  startNode: IntroDialogueStart
+  startAutomatically: 1
+  runSelectedOptionAsLine: 0
+  lineProvider: {fileID: 0}
+  verboseLogging: 1
+  onNodeStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNodeComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onDialogueComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onCommand:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7594892366242736866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7594892366242736879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5c74817f902f442b030eed004372a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  askStartDialogueNode: {fileID: 11400000, guid: 7ffbc6a71b18c5b4ab8a592fa95d37c8, type: 2}
+  dialogueRunner: {fileID: 7594892366242736877}
+--- !u!114 &7594892366242736867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7594892366242736879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b78d39bc92c62bb42b1d410337264e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDialogueStarted: {fileID: 11400000, guid: edbeb7a7ef6c13b439acb3cb7d8d4f6b, type: 2}
+  onDialogueComplete: {fileID: 11400000, guid: c8d8fc9651211614193279023192b218, type: 2}
+  onRunDialogueLine: {fileID: 11400000, guid: 1de71e5e4f26f0f42828cf76c496f583, type: 2}
+  onLineInterrupt: {fileID: 11400000, guid: bcdfddc9f2e74614e9d5169f5e897318, type: 2}
+  onRunOptions: {fileID: 11400000, guid: 12e6e185406f11544871e35495f3f3d3, type: 2}
+  onDismissLine: {fileID: 11400000, guid: 0893326d04562994aa82352ed73707a4, type: 2}
+  onUserRequestedViewAdvancement: {fileID: 11400000, guid: cc157010e9a96a949bbd038cd0d2b94b, type: 2}
+  askInterruptLine: {fileID: 11400000, guid: 84ade5f7cd879534ea7b2569862cdd56, type: 2}
+--- !u!114 &7594892366242736864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7594892366242736879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 097b95c9f69f04f2d8c08a817e7786af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueView: {fileID: 7594892366242736867}
+  continueActionType: 2
+  continueActionKeyCode: 32
+  continueActionReference: {fileID: 4692487767316123457, guid: 76414853c6c07204f8ba36d09b01425f, type: 3}
+  continueAction:
+    m_Name: Skip
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 1e2dbf13-2db9-485c-bd91-8666eb610793
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: b2844d7b-c4e9-473a-a39c-057a82aa0e7a
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Skip
+      m_Flags: 0
+    m_Flags: 0
+  enableActionOnStart: 1

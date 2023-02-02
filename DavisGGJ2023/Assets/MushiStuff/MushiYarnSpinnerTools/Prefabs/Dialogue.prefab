@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yarnProject: {fileID: 7545569452688597077, guid: 6728ea36e4b9bb84f82087fab60501dc, type: 3}
+  yarnProject: {fileID: 7545569452688597077, guid: 1dca75d7ca0a17a41a0543a0c932df9b, type: 3}
   _variableStorage: {fileID: 0}
   dialogueViews:
   - {fileID: 7189356616272944831}
-  startNode: Start
+  startNode: IntroDialogueStart
   startAutomatically: 1
   runSelectedOptionAsLine: 0
   lineProvider: {fileID: 0}

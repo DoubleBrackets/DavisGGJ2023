@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062150f0c86cb044ba4aaef2afb4d943, type: 3}
+  m_Name: ProtagMovementProfile
+  m_EditorClassIdentifier: 
+  description: 
+  maxWalkSpeed: 1.5
+  walkAcceleration: 15
+  maxRunSpeed: 3.5
+  runAcceleration: 15
+  frictionAcceleration: 8

@@ -95,6 +95,12 @@ namespace MushiSimpleFSM
             currentState.EnterState();
         }
 
+        public void DisableStateMachine()
+        {
+            currentState.ExitState();
+            currentState = null;
+        }
+
         public virtual void Update()
         {
             GenericState<BlkBoard> currentTransition = null;
