@@ -12,9 +12,9 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
+  - Player
+  - TerrainGround
+  - TerrainWall
   - 
   - 
   - 
@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: GroundDetail1
-    uniqueID: 3461157227
+  - name: Background
+    uniqueID: 1163536289
+    locked: 0
+  - name: MainLayer
+    uniqueID: 1323076019
+    locked: 0
+  - name: Foreground
+    uniqueID: 3626106559
     locked: 0

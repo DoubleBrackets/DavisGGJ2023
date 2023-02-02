@@ -14,10 +14,6 @@ public class ProtagMainController : DescriptionMonoBehavior
     private void OnEnable()
     {
         playerStateMachine = new ProtagStateMachine(blackboard);
-    }
-
-    private void Start()
-    {
         playerStateMachine.InitializeEntryState<ProtagIdle>();
     }
 

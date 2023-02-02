@@ -1,7 +1,8 @@
-﻿title: IntroDialogueStart
+﻿title: Start
 tags:
 ---
-Game: WELCOME TO THE GGJ 
+<<declare $TestValue to 69>>
+Game: WELCOME TO THE GGJ YOUR NUMBER IS {$TestValue}
 -> ME: Wait What?
     Game: YEP
 -> ME: OKEEE

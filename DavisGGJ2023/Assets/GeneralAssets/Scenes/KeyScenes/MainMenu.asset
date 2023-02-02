@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 062150f0c86cb044ba4aaef2afb4d943, type: 3}
-  m_Name: ProtagMovementProfile
+  m_Script: {fileID: 11500000, guid: 170d73d391d4ea34994fb7c50e542806, type: 3}
+  m_Name: MainMenu
   m_EditorClassIdentifier: 
   description: 
-  maxWalkSpeed: 5
-  walkAcceleration: 15
-  maxRunSpeed: 3.5
-  runAcceleration: 15
-  frictionAcceleration: 8
+  sceneName: MainMenu
+  scenePath: Assets/GeneralAssets/Scenes/KeyScenes/MainMenu.unity

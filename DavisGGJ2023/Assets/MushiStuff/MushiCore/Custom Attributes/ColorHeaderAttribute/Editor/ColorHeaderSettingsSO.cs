@@ -42,8 +42,8 @@ namespace MushiCore.Editor
                 var headerColors = newSettings.headerColors;
                 headerColors[0] = new Color(0.6f, 0.98f, 1f);
                 headerColors[1] = new Color(1f, 0.72f, 0.55f);
-                headerColors[3] = new Color(0.98f, 1f, 0.55f);
-                headerColors[4] = new Color(0.9f, 0.43f, 0.45f);
+                headerColors[3] = new Color(0.9f, 0.43f, 0.45f);
+                headerColors[4] = new Color(0.98f, 1f, 0.55f);
                 headerColors[5] = new Color(0.49f, 0.71f, 1f);
                 headerColors[6] = new Color(0.6f, 0.98f, 1f);
                 headerColors[2] = new Color(0.6f, 0.98f, 1f);
