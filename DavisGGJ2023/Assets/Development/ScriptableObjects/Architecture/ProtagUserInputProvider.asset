@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fccdfa69c805e1d4f8fb9a2cb45ec1c8, type: 3}
+  m_Name: ProtagUserInputProvider
+  m_EditorClassIdentifier: 
+  description: 
+  movement: {fileID: 9016637887607142220, guid: 100b460020a15704692cc0ec34331d8a, type: 3}
+  dash: {fileID: -3900213214322941185, guid: 100b460020a15704692cc0ec34331d8a, type: 3}
+  primaryFire: {fileID: 496286909289736874, guid: 100b460020a15704692cc0ec34331d8a, type: 3}
+  secondaryFire: {fileID: -2101458525983038578, guid: 100b460020a15704692cc0ec34331d8a, type: 3}
+  mousePosition: {fileID: -7967958378392702528, guid: 100b460020a15704692cc0ec34331d8a, type: 3}
+  interact: {fileID: 8590426175018720388, guid: 100b460020a15704692cc0ec34331d8a, type: 3}
+  pause: {fileID: -6574403924688327836, guid: 100b460020a15704692cc0ec34331d8a, type: 3}
