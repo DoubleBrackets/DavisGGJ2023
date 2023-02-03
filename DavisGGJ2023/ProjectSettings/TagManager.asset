@@ -15,9 +15,9 @@ TagManager:
   - Player
   - TerrainGround
   - TerrainWall
-  - 
-  - 
-  - 
+  - HeightTriggers
+  - NPC
+  - Destroyable
   - 
   - 
   - 

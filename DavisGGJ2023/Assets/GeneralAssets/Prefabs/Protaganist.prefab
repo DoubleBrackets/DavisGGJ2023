@@ -232,14 +232,17 @@ MonoBehaviour:
   collisionOffset: 0.001
   skinWidth: 0.03
   maxResolves: 10
+  heightChangerMask:
+    serializedVersion: 2
+    m_Bits: 1024
   shadowTransform: {fileID: 769951830}
   maxShadowCastDist: 0
   horizontalCoords: {x: 0, y: 0}
   horizontalVel: {x: 0, y: 0}
   height: 5
   verticalVelocity: 0
-  gravityAccel: 15
-  terminalVelocity: 10
+  gravityAccel: 13
+  terminalVelocity: 15
   isGrounded: 0
 --- !u!1 &8116578794832190062
 GameObject:
@@ -324,7 +327,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1 &8116578795587471460
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +376,7 @@ MonoBehaviour:
   description: Blackboard for dependencies and state
   InputProvider: {fileID: 11400000, guid: 2bb928eea77c68d43bf71d37ca04ca86, type: 2}
   ProtagMover: {fileID: 1216729925}
+  heightBody: {fileID: 8116578794953436582}
   basicMovementProfile: {fileID: 11400000, guid: 010023a6854f8ee448cee5f58a484935, type: 2}
   time: 0
 --- !u!114 &652174787

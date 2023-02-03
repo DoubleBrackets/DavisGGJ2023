@@ -6,6 +6,7 @@ public class ProtagBlackboard : DescriptionMonoBehavior
     [SerializeField] public ProtagInputProvider InputProvider;
     [SerializeField] public PlayerInputState InputState;
     [SerializeField] public BasicMovement ProtagMover;
+    [SerializeField] public HeightBody2D heightBody;
     [SerializeField] public BasicMovementProfileSO basicMovementProfile;
 
     [ColorHeader("State")]

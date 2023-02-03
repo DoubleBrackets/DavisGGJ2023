@@ -28,4 +28,26 @@ public class ProtagTransitions : TransitionTable<ProtagBlackboard>
 
         return false;
     }
+    
+    public bool GroundedToWalking(ref GenericState<ProtagBlackboard> state)
+    {
+        if (blackboard.heightBody.isGrounded)
+        {
+            state = GetState<ProtagWalking>();
+            return true;
+        }
+
+        return false;
+    }
+    
+    public bool AirborneToFalling(ref GenericState<ProtagBlackboard> state)
+    {
+        if (!blackboard.heightBody.isGrounded)
+        {
+            state = GetState<ProtagFalling>();
+            return true;
+        }
+
+        return false;
+    }
 }

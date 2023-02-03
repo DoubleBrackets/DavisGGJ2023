@@ -9,7 +9,8 @@ public class ProtagWalking : ProtagState
 
     public override bool TryTransition(ref GenericState<ProtagBlackboard> c)
     {
-        return transitions.WalkingToIdle(ref c);
+        return transitions.AirborneToFalling(ref c)||
+               transitions.WalkingToIdle(ref c);
     }
 
     public override void EnterState()
