@@ -11,7 +11,7 @@ public class ProtagTransitions : TransitionTable<ProtagBlackboard>
     {
         if (blackboard.InputState.movementVector != Vector2.zero)
         {
-            state = GetState<ProtagWalking>();
+            state = GetState<ProtagRunning>();
             return true;
         }
 
@@ -33,7 +33,7 @@ public class ProtagTransitions : TransitionTable<ProtagBlackboard>
     {
         if (blackboard.heightBody.isGrounded)
         {
-            state = GetState<ProtagWalking>();
+            state = GetState<ProtagRunning>();
             return true;
         }
 

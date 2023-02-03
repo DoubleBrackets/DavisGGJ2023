@@ -1,0 +1,78 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel ComputePaletteMap
+
+#define BLOCK_SIZE 16
+
+RWStructuredBuffer<float4> _Result;
+
+RWStructuredBuffer<float4> _Palette;
+uint _PaletteCount;
+
+uint _Size;
+
+uint _PaletteWidth;
+uint _PaletteHeight;
+
+float _rWeight;
+float _gWeight;
+float _bWeight;
+
+Texture2D<float4> _PaletteTexture;
+SamplerState my_point_clamp_sampler;
+
+
+float3 FindNearestColor(float3 sampleColor)
+{
+    float minDist = 100;
+    float3 res;
+
+    // Sampling based thingy
+    for (uint x = 0; x < _PaletteWidth; x+=1)
+    {
+        for (uint y = 0; y < _PaletteHeight; y+=1)
+        {
+            float2 uv = float2((float)x / _PaletteWidth, (float)y / _PaletteHeight);
+            float3 paletteSample = _PaletteTexture.SampleLevel(my_point_clamp_sampler, uv, 0).xyz;
+            float3 diff = (paletteSample - sampleColor);
+            float sqMag = _rWeight * diff.x * diff.x + _gWeight * diff.y * diff.y +  _bWeight * diff.z * diff.z;
+            if (sqMag <= minDist)
+            {
+                minDist = sqMag;
+                res = paletteSample;
+            }
+        }
+    }   
+
+    // Directly sampling from rgb
+    /*for (uint x = 0; x < _PaletteCount; x+=1)
+    {
+        float3 paletteSample = _Palette[x];
+        float3 diff = (paletteSample - sampleColor);
+        float sqMag = _rWeight * diff.x * diff.x + _gWeight * diff.y * diff.y +  _bWeight * diff.z * diff.z;
+        if (sqMag <= minDist)
+        {
+            minDist = sqMag;
+            res = paletteSample;
+        }
+    }   */
+    
+    return res;
+}
+
+float Round(float val, float roundInterval)
+{
+    return int(val / roundInterval) * roundInterval;
+}
+
+[numthreads(BLOCK_SIZE,BLOCK_SIZE,1)]
+void ComputePaletteMap (uint3 id : SV_DispatchThreadID)
+{
+    //float colorResolution = 1.0 / 128;
+    float max = _Size;
+    if(id.x >= _Size || id.y >= _Size || id.z >= _Size) return;
+    _Result[id.z * _Size * _Size + id.y * _Size + id.x] = float4(FindNearestColor(float3(id.x / max, id.y / max, id.z / max)), 1);
+    /*_Result[id.z * _Size * _Size + id.y * _Size + id.x] = float4(
+        Round(id.x / max, colorResolution),
+        Round(id.y / max, colorResolution),
+        Round(id.z / max, colorResolution), 1);*/
+}

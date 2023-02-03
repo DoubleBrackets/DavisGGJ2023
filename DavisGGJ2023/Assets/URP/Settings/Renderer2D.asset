@@ -76,3 +76,4 @@ MonoBehaviour:
   applyInEditor: 0
   settings:
     postProcessMaterial: {fileID: 2100000, guid: ee03b99ab6352044894a5f21c1267ea0, type: 2}
+    postProcessMaterialCameraAlign: {fileID: 2100000, guid: 46ccb0a5cfa4e5a4d8328f214d61271d, type: 2}

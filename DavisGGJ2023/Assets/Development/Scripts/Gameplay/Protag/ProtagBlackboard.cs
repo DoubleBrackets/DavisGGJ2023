@@ -8,6 +8,7 @@ public class ProtagBlackboard : DescriptionMonoBehavior
     [SerializeField] public BasicMovement ProtagMover;
     [SerializeField] public HeightBody2D heightBody;
     [SerializeField] public BasicMovementProfileSO basicMovementProfile;
+    [SerializeField] public ProtagAnimator animator;
 
     [ColorHeader("State")]
     [ReadOnly] public float time;

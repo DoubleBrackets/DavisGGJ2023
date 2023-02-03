@@ -24,7 +24,11 @@ public class ProtagFalling : ProtagState
 
     public override void UpdateState()
     {
-        
+        if (Time.time - stateEntryTime > 0.1f)
+        {
+            animator.SetFacing(ProtagAnimator.Facing.Down);
+            animator.PlayAnimation("Falling");
+        }
     }
 
     public override void FixedUpdateState()

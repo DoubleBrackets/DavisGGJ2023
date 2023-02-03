@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 
   maxWalkSpeed: 3.5
-  walkAcceleration: 15
+  walkAcceleration: 25
+  frictionAcceleration: 20
   maxRunSpeed: 3.5
   runAcceleration: 15
-  frictionAcceleration: 15

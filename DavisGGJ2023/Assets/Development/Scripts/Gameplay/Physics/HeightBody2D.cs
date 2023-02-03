@@ -184,6 +184,7 @@ public class HeightBody2D : MonoBehaviour
                 
                 // Offset Y to compensate for height snapping to allow for smooth movement
                 xTilt = groundXTilt;
+                verticalVelocity = 0f;
                 if (xTilt == 0)
                 {
                     y = horizontalCoords.y;
@@ -192,11 +193,8 @@ public class HeightBody2D : MonoBehaviour
                 {
                     float heightGained = groundHeight - height;
                     y = horizontalCoords.y - heightGained;
-                    
-                    // Snap to stairs when going down
-
                 }
-                verticalVelocity = 0f;
+
                 height = groundHeight;
                 closest = groundHeight;
             }
@@ -261,6 +259,6 @@ public class HeightBody2D : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawSphere(horizontalCoords, 0.5f);
+        Gizmos.DrawWireSphere(horizontalCoords, 0.5f);
     }
 }

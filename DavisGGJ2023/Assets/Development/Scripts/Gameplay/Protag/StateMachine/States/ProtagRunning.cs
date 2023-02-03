@@ -1,9 +1,9 @@
 using MushiSimpleFSM;
 using UnityEngine;
 
-public class ProtagWalking : ProtagState
+public class ProtagRunning : ProtagState
 {
-    public ProtagWalking(StateMachine<ProtagBlackboard> stateMachine) : base(stateMachine)
+    public ProtagRunning(StateMachine<ProtagBlackboard> stateMachine) : base(stateMachine)
     {
     }
 
@@ -25,11 +25,13 @@ public class ProtagWalking : ProtagState
 
     public override void UpdateState()
     {
-       
+        animator.SetFacing(inputState.movementVector);
+        animator.PlayAnimation(heightBody.horizontalVel.magnitude > 0.1f ? "Run" : "Idle");
     }
 
     public override void FixedUpdateState()
     {
+        
         protagMover.SimpleHorizontalMovement(
             inputState.movementVector,
             basicMovementProfile.MaxWalkSpeed,

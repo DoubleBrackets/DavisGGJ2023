@@ -14,4 +14,5 @@ public abstract class ProtagState : GenericState<ProtagBlackboard>
     protected BasicMovement protagMover => blackboard.ProtagMover;
     protected BasicMovementProfileSO basicMovementProfile => blackboard.basicMovementProfile;
     protected HeightBody2D heightBody => blackboard.heightBody;
+    protected ProtagAnimator animator => blackboard.animator;
 }

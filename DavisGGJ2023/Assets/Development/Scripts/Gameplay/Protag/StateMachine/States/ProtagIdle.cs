@@ -16,7 +16,7 @@ public class ProtagIdle : ProtagState
 
     public override void EnterState()
     {
-        
+        animator.PlayAnimation("Idle");
     }
 
     public override void ExitState()
