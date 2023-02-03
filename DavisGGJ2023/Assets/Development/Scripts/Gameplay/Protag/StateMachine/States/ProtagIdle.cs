@@ -17,11 +17,12 @@ public class ProtagIdle : ProtagState
     public override void EnterState()
     {
         animator.PlayAnimation("Idle");
+        transitions.SubOnPrimaryDoBasicAttack();
     }
 
     public override void ExitState()
     {
-        
+        transitions.UnsubOnPrimaryDoBasicAttack();
     }
 
     public override void UpdateState()

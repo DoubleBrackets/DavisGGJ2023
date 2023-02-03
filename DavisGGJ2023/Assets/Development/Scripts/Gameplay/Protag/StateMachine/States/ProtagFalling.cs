@@ -15,11 +15,12 @@ public class ProtagFalling : ProtagState
     public override void EnterState()
     {
         heightBody.horizontalVel.x = 0f;
+        blackboard.askStopFollowingTarget.RaiseEvent();
     }
 
     public override void ExitState()
     {
-        
+        blackboard.askStartFollowingTarget.RaiseEvent(blackboard.playerBodyTransform);
     }
 
     public override void UpdateState()

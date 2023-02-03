@@ -12,7 +12,7 @@ ScriptedImporter:
     TextureType: 8
     TextureShape: 1
     SpriteMode: 2
-    PixelsPerUnit: 32
+    PixelsPerUnit: 16
     MeshType: 1
     ExtrudeEdges: 1
     Pivot: 2

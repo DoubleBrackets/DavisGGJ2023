@@ -7,19 +7,12 @@ public class BasicMovementProfileSO : DescriptionBaseSO
 
     public float WalkAcceleration => walkAcceleration;
 
-    public float MaxRunSpeed => maxRunSpeed;
-
-    public float RunAcceleration => runAcceleration;
-
     public float FrictionAcceleration => frictionAcceleration;
 
-    [ColorHeader("Walking", ColorHeaderColor.Config)]
+    [ColorHeader("Run", ColorHeaderColor.Config)]
     [SerializeField] private float maxWalkSpeed;
     [SerializeField] private float walkAcceleration;
     [SerializeField] private float frictionAcceleration;
     
-    [ColorHeader("Running", ColorHeaderColor.Config)]
-    [SerializeField] private float maxRunSpeed;
-    [SerializeField] private float runAcceleration;
 
 }

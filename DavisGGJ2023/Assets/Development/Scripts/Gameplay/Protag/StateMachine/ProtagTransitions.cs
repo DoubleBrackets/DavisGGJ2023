@@ -50,4 +50,19 @@ public class ProtagTransitions : TransitionTable<ProtagBlackboard>
 
         return false;
     }
+
+    public void SubOnPrimaryDoBasicAttack()
+    {
+        blackboard.InputProvider.Events.OnPrimaryFirePressed += TryToBasicAttack;
+    }
+
+    private void TryToBasicAttack()
+    {
+        context.ForceTransition(GetState<ProtagPunchAttack>());
+    }
+    
+    public void UnsubOnPrimaryDoBasicAttack()
+    {
+        blackboard.InputProvider.Events.OnPrimaryFirePressed -= TryToBasicAttack;
+    }
 }

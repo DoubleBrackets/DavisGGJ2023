@@ -15,4 +15,7 @@ public abstract class ProtagState : GenericState<ProtagBlackboard>
     protected BasicMovementProfileSO basicMovementProfile => blackboard.basicMovementProfile;
     protected HeightBody2D heightBody => blackboard.heightBody;
     protected ProtagAnimator animator => blackboard.animator;
+    protected AttackProfileSO BasicAttackProfile => blackboard.basicAttackProfile;
+    protected Transform playerBody => blackboard.playerBodyTransform;
+    protected float stateDuration => Time.time - stateEntryTime;
 }

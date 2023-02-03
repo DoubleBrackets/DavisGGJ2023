@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: ProtagMovementProfile
   m_EditorClassIdentifier: 
   description: 
-  maxWalkSpeed: 3.5
-  walkAcceleration: 25
-  frictionAcceleration: 20
-  maxRunSpeed: 3.5
-  runAcceleration: 15
+  maxWalkSpeed: 6
+  walkAcceleration: 50
+  frictionAcceleration: 40

@@ -38,6 +38,12 @@ public class HeightBody2D : MonoBehaviour
     public bool isGrounded;
     private float xTilt;
     private float nearestGroundIfNotGrounded;
+
+    public Vector2 TransformPosition => targetTransform.position;
+    
+    // Events
+    public event Action<Vector2> onHorizontalCollide;
+    
     private void OnEnable()
     {
         hasShadow = shadowTransform != null;
@@ -52,9 +58,20 @@ public class HeightBody2D : MonoBehaviour
         Vector2 horizontalStep = horizontalVel  * Time.fixedDeltaTime;
         horizontalStep.y *= Mathf.Cos(xTilt);
 
-        if(isGrounded) 
+        // To prevent weird collisions when dropping down
+        if (isGrounded)
+        {
+            Vector2 startStep = horizontalStep;
+            
             HorizontalCollisions(ref horizontalStep, 0);
-        
+            
+            Vector2 impactVel = (startStep - horizontalStep) / Time.fixedDeltaTime;
+            if (impactVel != Vector2.zero)
+            {
+                onHorizontalCollide?.Invoke(impactVel);
+            }
+        }
+
         ApplyVelocity(horizontalStep, startHorizontalCoords);
         RecalculatePosition();
     }
@@ -252,7 +269,7 @@ public class HeightBody2D : MonoBehaviour
                 y,
                 height);
 
-            shadowTransform.localScale = Vector3.one * Mathf.InverseLerp(2f, 0f, distance);
+            shadowTransform.localScale = Vector3.one * Mathf.InverseLerp(maxShadowCastDist, 0f, distance);
         }
     }
 
