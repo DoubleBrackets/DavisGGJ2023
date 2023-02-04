@@ -33,7 +33,6 @@ public class CameraController : MonoBehaviour
     private void SetDamping(float damping)
     {
         var following = followingCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
-        Debug.Log(damping);
         following.Damping = new Vector3(damping, damping, 1f);
     }
 

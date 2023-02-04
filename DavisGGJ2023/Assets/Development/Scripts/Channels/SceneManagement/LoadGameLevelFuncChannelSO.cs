@@ -7,10 +7,10 @@ using UnityEngine;
 /// Returns whether or not the scene can be loaded
 /// </summary>
 [CreateAssetMenu(menuName = "Channels/Funcs/LoadGameLevelFuncChannel", fileName = "NewLoadGameLevelFuncChannel")]
-public class LoadGameLevelFuncChannelSO : GenericFuncChannelSO<GameLevelSO, TransitionEffect, TransitionEffect,  bool>
+public class LoadGameLevelFuncChannelSO : GenericFuncChannelSO<GameLevelSO, TransitionEffect, TransitionEffect, Action, bool>
 {
-    public override bool CallFunc(GameLevelSO t1, TransitionEffect transitionOut, TransitionEffect transitionIn)
+    public override bool CallFunc(GameLevelSO t1, TransitionEffect transitionOut, TransitionEffect transitionIn, Action loadScreenActions = null)
     {
-        return base.CallFunc(t1, transitionOut, transitionIn);
+        return base.CallFunc(t1, transitionOut, transitionIn, loadScreenActions);
     }
 }

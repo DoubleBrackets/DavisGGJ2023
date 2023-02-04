@@ -91,6 +91,7 @@ public class TargetDummyController : MonoBehaviour
     {
         currentState = TargetDummyState.Normal;
         spriteRenderer.sprite = normalSprite;
+        heightBody.horizontalVel *= 0.5f;
         heightBody.onHorizontalCollide -= OnKilled;
     }
 

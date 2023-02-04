@@ -9,7 +9,7 @@ public class ColdStartup : MonoBehaviour
 {
 
     [ColorHeader("Dependencies")]
-    [SerializeField] private StartupDataBoardSO startDataBoard;
+    [SerializeField] private GameStateSO startDataBoard;
     
     [ColorHeader("Config", ColorHeaderColor.Config)]
     [SerializeField] private string persistentManagersSceneName;

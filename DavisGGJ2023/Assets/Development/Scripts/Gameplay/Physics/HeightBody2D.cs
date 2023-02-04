@@ -26,6 +26,8 @@ public class HeightBody2D : MonoBehaviour
     [SerializeField] private Transform shadowTransform;
     [SerializeField] private float maxShadowCastDist;
     private bool hasShadow;
+
+    public Transform ShadowTransform => shadowTransform;
     
     [ColorHeader("Physics State")]
     public Vector2 horizontalCoords;

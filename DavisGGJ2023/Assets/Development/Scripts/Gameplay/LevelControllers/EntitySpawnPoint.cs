@@ -46,6 +46,7 @@ public class EntitySpawnPoint : MonoBehaviour
         instance = null;
     }
     
+    #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if (entityPrefab == null) return;
@@ -58,4 +59,5 @@ public class EntitySpawnPoint : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(position, 0.5f);
     }
+    #endif
 }

@@ -15,7 +15,12 @@ public class PersistentSceneLoader : DescriptionMonoBehavior
     [SerializeField] private TransitionInFuncChannelSO askTransitionIn;
     [SerializeField] private VoidEventChannelSO onGameLevelLoaded;
 
+    [ColorHeader("Dependencies")]
+    [SerializeField] private GameStateSO gameState;
+    
     private Dictionary<int, string> currentScenes = new();
+
+    private Coroutine currentOperation;
 
     private void OnEnable()
     {
@@ -40,29 +45,44 @@ public class PersistentSceneLoader : DescriptionMonoBehavior
         string sceneName, 
         int sceneLayer, 
         TransitionEffect transitionOut, 
-        TransitionEffect transitionIn, bool isGameLevel)
+        TransitionEffect transitionIn, bool isGameLevel,
+        Action loadScreenAction = null)
     {
         // Check if scene is already loaded
-        if (currentScenes.ContainsKey(sceneLayer) && currentScenes[0] == sceneName)
+        if (currentOperation != null || currentScenes.ContainsKey(sceneLayer) && currentScenes[0] == sceneName)
         {
             return false;
         }
 
-        StartCoroutine(CoroutLoadScene(sceneName, sceneLayer, transitionOut, transitionIn, isGameLevel));
+        currentOperation = StartCoroutine(CoroutLoadScene(sceneName, sceneLayer, transitionOut, transitionIn, isGameLevel, loadScreenAction));
         return true;
     }
     
-    private bool LoadGameLevel(GameLevelSO level, TransitionEffect transitionOut, TransitionEffect transitionIn)
+    private bool LoadGameLevel(GameLevelSO level, TransitionEffect transitionOut, TransitionEffect transitionIn, Action loadScreenActions)
     {
-        return LoadScene(level.name, 0, transitionOut, transitionIn, true);
+        
+        bool didLoad = LoadScene(level.name, 0, transitionOut, transitionIn, true);
+        if (didLoad)
+        {
+            gameState.CurrentlyLoadedLevel = level;
+        }
+
+        return didLoad;
     }
 
-    private IEnumerator CoroutLoadScene(string newSceneName, int sceneLayer, TransitionEffect transitionOut, TransitionEffect transitionIn, bool isGameLevel)
+    private IEnumerator CoroutLoadScene(
+        string newSceneName, 
+        int sceneLayer, 
+        TransitionEffect transitionOut, 
+        TransitionEffect transitionIn, 
+        bool isGameLevel,
+        Action loadScreenActions)
     {
         // Start transition out
 
         yield return askTransitionOut.CallFunc(transitionOut, false);
         
+        loadScreenActions?.Invoke();
         // Loading unloading scenes
         var unloadHandler = new AsyncOperation();
         bool existingScene = currentScenes.ContainsKey(sceneLayer);
@@ -92,6 +112,7 @@ public class PersistentSceneLoader : DescriptionMonoBehavior
         
         // Start transition in
         yield return askTransitionIn.CallFunc(transitionIn, false);
+        currentOperation = null;
     }
     
 }

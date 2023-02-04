@@ -8,7 +8,7 @@ public class PersistentGameManager : DescriptionMonoBehavior
     [SerializeField] private LoadSceneFuncChannelSO askLoadScene;
     
     [ColorHeader("Dependencies")]
-    [SerializeField] private StartupDataBoardSO startupBoard;
+    [SerializeField] private GameStateSO gameState;
     [SerializeField] private GameLevelSO defaultEntryLevel;
 
     void OnEnable()
@@ -19,12 +19,20 @@ public class PersistentGameManager : DescriptionMonoBehavior
 
     private void OnDisable()
     {
-        startupBoard.EntryGameLevel = null;
+        
+        ResetGameState();
     }
-
+    
+    private void ResetGameState()
+    {
+        gameState.TargetEntrance = null;
+        gameState.CurrentlyLoadedLevel = null;
+        gameState.EntryGameLevel = null;
+    }
+    
     private void LoadEntryScene()
     {
-        if (startupBoard.EntryGameLevel == null)
+        if (gameState.EntryGameLevel == null)
         {
             askLoadGameLevel.CallFunc(
                 defaultEntryLevel, 
@@ -34,7 +42,7 @@ public class PersistentGameManager : DescriptionMonoBehavior
         else
         {
             askLoadGameLevel.CallFunc(
-                startupBoard.EntryGameLevel, 
+                gameState.EntryGameLevel, 
                 TransitionEffect.None, 
                 TransitionEffect.None);
         }

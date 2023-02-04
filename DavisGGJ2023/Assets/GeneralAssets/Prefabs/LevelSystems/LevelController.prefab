@@ -46,9 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   askRestartLevel: {fileID: 11400000, guid: 6b2093bf2dc6d84418525143b4cd31c6, type: 2}
   onLevelLoaded: {fileID: 11400000, guid: cb932175564bf3349921612daf952e75, type: 2}
+  askTravelToNewLevel: {fileID: 11400000, guid: 745383e6473f3b74f8251c375a57489d, type: 2}
   askGetTransitionOut: {fileID: 11400000, guid: 035cd9a63323df646acdfd223f66f227, type: 2}
   askGetTransitionIn: {fileID: 11400000, guid: 82fc72bbc0b126a47b704a5e6e3f9150, type: 2}
   askChangeInputMode: {fileID: 11400000, guid: 15c5cef5a764f1e4299f23c6526eebe4, type: 2}
   askSpawnAllEntities: {fileID: 11400000, guid: 6603be6bec09d5143a3c2cb1a4b997a2, type: 2}
+  askSpawnPlayer: {fileID: 11400000, guid: 6b3c538ec80159e4e9dbfc449066ec71, type: 2}
   askClearAllEntities: {fileID: 11400000, guid: 6c8c7a00932d62845b89209c5ea21088, type: 2}
   askDiposeAllVFX: {fileID: 11400000, guid: 44c9a0dd9b1355146bbc653b293a19ac, type: 2}
+  askLoadGameLevel: {fileID: 11400000, guid: b2c0da94ce7aadb4784f4bc2ee61e83c, type: 2}
+  gameState: {fileID: 11400000, guid: 512ab1ba90c8b5146963b220cf4791c8, type: 2}

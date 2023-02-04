@@ -8,15 +8,20 @@ public class LevelStateManager : MonoBehaviour
     [ColorHeader("Listening", ColorHeaderColor.ListeningChannels)]
     [SerializeField] private VoidEventChannelSO askRestartLevel;
     [SerializeField] private VoidEventChannelSO onLevelLoaded;
+    [SerializeField] private LevelEntranceEventChannelSO askTravelToNewLevel;
 
     [ColorHeader("Invoking", ColorHeaderColor.InvokingChannels)]
     [SerializeField] private TransitionOutFuncChannelSO askGetTransitionOut;
     [SerializeField] private TransitionInFuncChannelSO askGetTransitionIn;
     [SerializeField] private InputModeEventChannelSO askChangeInputMode;
     [SerializeField] private VoidEventChannelSO askSpawnAllEntities;
+    [SerializeField] private LevelEntranceEventChannelSO askSpawnPlayer;
     [SerializeField] private VoidEventChannelSO askClearAllEntities;
     [SerializeField] private VoidEventChannelSO askDiposeAllVFX;
+    [SerializeField] private LoadGameLevelFuncChannelSO askLoadGameLevel;
 
+    [ColorHeader("Dependencies")]
+    [SerializeField] private GameStateSO gameState;
     // Fields
     
     private Coroutine currentOperation;
@@ -25,12 +30,27 @@ public class LevelStateManager : MonoBehaviour
     {
         onLevelLoaded.OnRaised += Setup;
         askRestartLevel.OnRaised += RestartLevel;
+        askTravelToNewLevel.OnRaised += TravelToNewLevel;
     }
     
     private void OnDisable()
     {
         onLevelLoaded.OnRaised -= Setup;
         askRestartLevel.OnRaised -= RestartLevel;
+        askTravelToNewLevel.OnRaised -= TravelToNewLevel;
+    }
+
+    private void TravelToNewLevel(LevelEntranceSO nextLevel)
+    {
+        askChangeInputMode.RaiseEvent(InputMode.Disabled);
+        bool successful = askLoadGameLevel.CallFunc(
+            nextLevel.LevelToEnter,
+            TransitionEffect.FadeBlack,
+            TransitionEffect.FadeBlack,
+            Cleanup);
+        
+        if(successful)
+            gameState.TargetEntrance = nextLevel;
     }
 
     private void Setup()
@@ -64,9 +84,8 @@ public class LevelStateManager : MonoBehaviour
     {
         askChangeInputMode.RaiseEvent(InputMode.Disabled);
         yield return askGetTransitionOut.CallFunc(TransitionEffect.FadeBlack, false);
-        
-        askDiposeAllVFX.RaiseEvent();
-        askClearAllEntities.RaiseEvent();
+
+        Cleanup();
         LoadLevel();
         
         yield return askGetTransitionIn.CallFunc(TransitionEffect.FadeBlack, false);
@@ -74,8 +93,15 @@ public class LevelStateManager : MonoBehaviour
         currentOperation = null;
     }
 
+    private void Cleanup()
+    {
+        askDiposeAllVFX.RaiseEvent();
+        askClearAllEntities.RaiseEvent();
+    }
+
     private void LoadLevel()
     {
+        askSpawnPlayer.RaiseEvent(gameState.TargetEntrance);
         askSpawnAllEntities.RaiseEvent();
     }
 }

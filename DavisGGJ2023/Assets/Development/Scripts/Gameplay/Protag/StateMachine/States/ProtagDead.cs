@@ -18,6 +18,7 @@ public class ProtagDead : ProtagState
     {
         blackboard.askStopFollowingTarget.RaiseEvent();
         playerBody.gameObject.SetActive(false);
+        heightBody.ShadowTransform.gameObject.SetActive(false);
         tryRestart = false;
 
         blackboard.askPlayVFX.CallFunc(

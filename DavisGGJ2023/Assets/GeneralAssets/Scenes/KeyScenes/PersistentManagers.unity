@@ -445,6 +445,7 @@ MonoBehaviour:
   askTransitionOut: {fileID: 11400000, guid: 035cd9a63323df646acdfd223f66f227, type: 2}
   askTransitionIn: {fileID: 11400000, guid: 82fc72bbc0b126a47b704a5e6e3f9150, type: 2}
   onGameLevelLoaded: {fileID: 11400000, guid: cb932175564bf3349921612daf952e75, type: 2}
+  gameState: {fileID: 11400000, guid: 512ab1ba90c8b5146963b220cf4791c8, type: 2}
 --- !u!1 &1072213500
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,7 +961,7 @@ MonoBehaviour:
   description: 
   askLoadGameLevel: {fileID: 11400000, guid: b2c0da94ce7aadb4784f4bc2ee61e83c, type: 2}
   askLoadScene: {fileID: 11400000, guid: 5f55ebca5a72fdb4fa38e39d15a4f440, type: 2}
-  startupBoard: {fileID: 11400000, guid: 512ab1ba90c8b5146963b220cf4791c8, type: 2}
+  gameState: {fileID: 11400000, guid: 512ab1ba90c8b5146963b220cf4791c8, type: 2}
   defaultEntryLevel: {fileID: 11400000, guid: 7654af7e824c11b45845f08e50f7c523, type: 2}
 --- !u!4 &1809513812
 Transform:

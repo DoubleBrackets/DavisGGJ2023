@@ -56,7 +56,7 @@ public class AttackManager : MonoBehaviour
 
         foreach (var hit in hits)
         {
-            var combatEntity = hit.GetComponent<CombatEntity>();
+            var combatEntity = hit.GetComponent<Attackable>();
             if (combatEntity != null)
             {
                 anyHits |= combatEntity.ReceiveAttack(attackProfile, attackInfo);
