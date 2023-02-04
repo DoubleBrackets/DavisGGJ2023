@@ -25,12 +25,14 @@ public class TargetDummyController : MonoBehaviour
     private void OnEnable()
     {
         combatEntity.onAttackReceived += ReceiveAttack;
+        heightBody.onHitHazard += OnHazard;
         ExitStagger();
     }
     
     private void OnDisable()
     {
         combatEntity.onAttackReceived -= ReceiveAttack;
+        heightBody.onHitHazard -= OnHazard;
     }
 
     private bool ReceiveAttack(AttackProfileSO attackProfile, AttackInfo attack)
@@ -82,21 +84,28 @@ public class TargetDummyController : MonoBehaviour
     {
         currentState = TargetDummyState.Staggered;
         spriteRenderer.sprite = staggeredSprite;
-        heightBody.onHorizontalCollide += OnCollide;
+        heightBody.onHorizontalCollide += OnKilled;
     }
     
     private void ExitStagger()
     {
         currentState = TargetDummyState.Normal;
         spriteRenderer.sprite = normalSprite;
-        heightBody.onHorizontalCollide -= OnCollide;
+        heightBody.onHorizontalCollide -= OnKilled;
     }
 
-    private void OnCollide(Vector2 collisionVel, Vector2 initialVel)
+    private void OnHazard()
     {
+        OnKilled(Vector2.zero, Vector2.up);
+    }
+
+    private void OnKilled(Vector2 collisionVel, Vector2 initialVel)
+    {
+        Vector3 pos = heightBody.TransformPosition;
+        pos += initialVel.GetAngle() * Vector3.right;
         askPlayVFX.CallFunc(deathVFX, 0, new PlayVFXSettings()
         {
-            position = heightBody.TransformPosition,
+            position = pos,
             rotation = initialVel.GetAngle()
         });
         Destroy(gameObject);

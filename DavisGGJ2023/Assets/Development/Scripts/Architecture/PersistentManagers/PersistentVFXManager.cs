@@ -7,6 +7,7 @@ public class PersistentVFXManager : MonoBehaviour
     [ColorHeader("Listening", ColorHeaderColor.ListeningChannels)]
     [SerializeField] private PlayVFXFuncChannelSO askGetPlayVFX;
     [SerializeField] private PlayVFXFuncChannelSO askGetStopVFX;
+    [SerializeField] private VoidEventChannelSO killAllVFX;
 
 
     private Dictionary<string, List<VFXEffect>> effectInstanceDict = new();
@@ -15,12 +16,26 @@ public class PersistentVFXManager : MonoBehaviour
     {
         askGetPlayVFX.OnCalled += PlayVFX;
         askGetPlayVFX.OnCalled += StopVFX;
+        killAllVFX.OnRaised += DisposeAllVFX;
     }
     
     private void OnDisable()
     {
         askGetPlayVFX.OnCalled -= PlayVFX;
         askGetPlayVFX.OnCalled -= StopVFX;
+        killAllVFX.OnRaised -= DisposeAllVFX;
+    }
+
+    private void DisposeAllVFX()
+    {
+        foreach (var pair in effectInstanceDict)
+        {
+            var effectList = pair.Value;
+            foreach(var effect in effectList)
+                effect.DisposeEffect();
+            effectList.Clear();
+        }
+        effectInstanceDict.Clear();
     }
 
     private void Update()

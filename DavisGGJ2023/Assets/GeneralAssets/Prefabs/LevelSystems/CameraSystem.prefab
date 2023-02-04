@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1117398849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1117398850}
+  - component: {fileID: 1117398851}
+  m_Layer: 0
+  m_Name: Bounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1117398850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117398849}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3749249567574938381}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1117398851
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117398849}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 22, y: 16}
+      - {x: -12, y: 16}
+      - {x: -12, y: -5}
+      - {x: 22, y: -5}
+  m_UseDelaunayMesh: 0
 --- !u!1 &3749249567533778420
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3749249567533778422}
   - component: {fileID: 3749249567533778421}
+  - component: {fileID: 505772668}
   m_Layer: 0
   m_Name: PlayerFollowCam
   m_TagString: Untagged
@@ -71,6 +134,21 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 3749249568302600105}
+--- !u!114 &505772668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3749249567533778420}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BoundingShape2D: {fileID: 1117398851}
+  m_Damping: 0
+  m_MaxWindowSize: -1
 --- !u!1 &3749249567574938380
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,6 +181,7 @@ Transform:
   - {fileID: 3749249568256054005}
   - {fileID: 3749249567533778422}
   - {fileID: 3749249568457150452}
+  - {fileID: 1117398850}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -121,6 +200,7 @@ MonoBehaviour:
   askStopFollowingTarget: {fileID: 11400000, guid: 17289f9e3db537a47b7ee714d584070d, type: 2}
   askStartFollowingTransform: {fileID: 11400000, guid: 1282d8e51b46f4e4c88729959b754893, type: 2}
   lockOnTarget: {fileID: 11400000, guid: 0bb4d449ca1db304d8d3a60414944150, type: 2}
+  askSetDamping: {fileID: 11400000, guid: d7d8ea3e0cd1c3b48b6e32fbc7958afc, type: 2}
   followingCamera: {fileID: 3749249567533778421}
 --- !u!1 &3749249568256054010
 GameObject:
@@ -135,7 +215,6 @@ GameObject:
   - component: {fileID: 3749249568256054011}
   - component: {fileID: 3749249568256054006}
   - component: {fileID: 3749249568256054007}
-  - component: {fileID: 3749249568256054000}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -276,30 +355,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3749249568256054000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3749249568256054010}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ComponentVersion: 1
-  m_AssetsPPU: 16
-  m_RefResolutionX: 480
-  m_RefResolutionY: 270
-  m_CropFrame: 3
-  m_GridSnapping: 2
-  m_FilterMode: 0
-  m_UpscaleRT: 0
-  m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
 --- !u!1 &3749249568302600104
 GameObject:
   m_ObjectHideFlags: 0

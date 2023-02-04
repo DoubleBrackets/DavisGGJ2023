@@ -7,6 +7,7 @@ public class VerticalHeightRamp : MonoBehaviour
     [SerializeField] private BoxCollider2D coll;
     [SerializeField] private float heightBottom;
     [SerializeField] private float heightTop;
+    [SerializeField] private float stairLength;
 
     [ReadOnly,SerializeField] private float lowerY;
     [ReadOnly,SerializeField] private float upperY;
@@ -24,16 +25,26 @@ public class VerticalHeightRamp : MonoBehaviour
     private void Awake()
     {
         var bounds = coll.bounds;
-        Vector2 center = bounds.center;
-        lowerY = center.y - bounds.extents.y;
-        upperY = center.y + bounds.extents.y;
+        float bottomPos = bounds.center.y - bounds.extents.y - bounds.center.z;
+        lowerY = bottomPos;
+        upperY = bottomPos + stairLength;
 
-        angle = Mathf.Atan2(heightTop - heightBottom, upperY - lowerY);
+        angle = Mathf.Atan2(heightTop - heightBottom, stairLength);
     }
 
-    public float EvaluateHeight(Vector2 pos)
+    public float EvaluateHeight(Vector2 horizontalPos)
     {
-        float t = Mathf.InverseLerp(lowerY, upperY, pos.y);
+        float t = Mathf.InverseLerp(lowerY, upperY, horizontalPos.y);
         return Mathf.Lerp(heightBottom, heightTop, t);
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        var bounds = coll.bounds;
+        Vector3 bottomPos = bounds.center - Vector3.up * bounds.extents.y;
+        Gizmos.DrawLine(bottomPos, bottomPos + stairLength * Vector3.up);
+        bottomPos -= bounds.center.z * Vector3.up;
+        Gizmos.DrawLine(bottomPos, bottomPos + stairLength * Vector3.up);
     }
 }

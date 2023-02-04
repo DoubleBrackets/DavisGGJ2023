@@ -29,6 +29,8 @@ public class AttackProfileSO : ScriptableObject
 
     public float Depth => depth;
 
+    public float PlayVFXTime => playVFXTime;
+
     [ColorHeader("Stats")]
     [SerializeField] private float knockbackVelocity;
     [SerializeField] private float verticalKnockbackVelocity;
@@ -43,6 +45,7 @@ public class AttackProfileSO : ScriptableObject
     [SerializeField] private LayerMask hitMask;
     
     [ColorHeader("Timing")]
+    [SerializeField] private float playVFXTime;
     [SerializeField] private float windupDuration;
     [SerializeField] private float followThroughDuration;
     [SerializeField] private float cooldown;

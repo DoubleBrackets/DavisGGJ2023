@@ -65,4 +65,26 @@ public class ProtagTransitions : TransitionTable<ProtagBlackboard>
     {
         blackboard.InputProvider.Events.OnPrimaryFirePressed -= TryToBasicAttack;
     }
+    
+    public void SubOnHitDoDie()
+    {
+        blackboard.protagCombatEntity.onAttackReceived += TryToDie;
+        blackboard.heightBody.onHitHazard += TryToDie;
+    }
+    private bool TryToDie(AttackProfileSO attackProfileSo, AttackInfo attackInfo)
+    {
+        TryToDie();
+        return true;
+    }
+
+    private void TryToDie()
+    {
+        context.ForceTransition(GetState<ProtagDead>());
+    }
+    
+    public void UnsubOnHitDoDie()
+    {
+        blackboard.protagCombatEntity.onAttackReceived -= TryToDie;
+        blackboard.heightBody.onHitHazard -= TryToDie;
+    }
 }

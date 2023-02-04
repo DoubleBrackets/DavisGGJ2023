@@ -15,25 +15,41 @@ public class BasicMovement : MonoBehaviour
         float fricAccel,
         float timeStep)
     {
-        bool isOverTopSpeed = heightBody.horizontalVel.magnitude > maxSpeed;
+        float currentSpeed = heightBody.horizontalVel.magnitude;
+        bool isOverTopSpeed =  currentSpeed > maxSpeed;
         bool isNoInput = input == Vector2.zero;
         
+        // The guarantee 1 movespeed is to reduce collision issues with low speeds
         if (isNoInput || isOverTopSpeed)
         {
+            if (currentSpeed <= 1f)
+                heightBody.horizontalVel = Vector2.zero;
             ApplyHorizontalFriction(fricAccel, timeStep);
         }
         else
         {
-            ApplyHorizontalMovement(input.normalized, maxSpeed, acceleration, timeStep);
+            if (currentSpeed <= 1f)
+                heightBody.horizontalVel = input * 1f;
+            ApplyHorizontalMovement(input.normalized, maxSpeed, acceleration,fricAccel, timeStep);
         }
     }
 
-    private void ApplyHorizontalMovement(Vector2 input, float maxSpeed, float acceleration, float timeStep)
+    private void ApplyHorizontalMovement(Vector2 input, float maxSpeed, float acceleration, float frictionAccel, float timeStep)
     {
-        heightBody.horizontalVel = Vector2.MoveTowards(
+        Vector2 newVel = Vector2.MoveTowards(
             heightBody.horizontalVel, 
             input * maxSpeed, 
             acceleration * timeStep);
+
+        if (newVel.magnitude < heightBody.horizontalVel.magnitude && frictionAccel > acceleration)
+        {
+            newVel = Vector2.MoveTowards(
+                heightBody.horizontalVel, 
+                input * maxSpeed, 
+                frictionAccel * timeStep);
+        }
+
+        heightBody.horizontalVel = newVel;
     }
 
     private void ApplyHorizontalFriction(float fricAcceleration, float timeStep)

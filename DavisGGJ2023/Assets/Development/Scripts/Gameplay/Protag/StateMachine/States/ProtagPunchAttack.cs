@@ -9,6 +9,10 @@ public class ProtagPunchAttack : ProtagState
     }
 
     private bool attacked;
+    private bool vfxPlayed;
+    private Vector2 mouseVec;
+    private Vector3 attackPos;
+    private Quaternion attackRotation;
 
     public override bool TryTransition(ref GenericState<ProtagBlackboard> c)
     {
@@ -22,18 +26,28 @@ public class ProtagPunchAttack : ProtagState
 
     public override void EnterState()
     {
-        Vector2 mouseVec = 
+        attackPos = playerBody.position + Vector3.up;
+            
+        mouseVec = 
             Camera.main.ScreenToWorldPoint(inputState.mousePosition) -
-            playerBody.transform.position;
+            attackPos;
+        
+        attackRotation = mouseVec.GetAngle();
         
         animator.SetFacing(mouseVec);
         animator.PlayAnimation("Idle");
+        heightBody.gravityEnabled = false;
         attacked = false;
+        vfxPlayed = false;
+        
+        transitions.SubOnHitDoDie();
     }
 
     public override void ExitState()
     {
+        heightBody.gravityEnabled = true;
         
+        transitions.UnsubOnHitDoDie();
     }
 
     public override void UpdateState()
@@ -41,34 +55,35 @@ public class ProtagPunchAttack : ProtagState
         if (!attacked && stateDuration > BasicAttackProfile.WindupDuration)
         {
             var attackProfile = blackboard.basicAttackProfile;
-            Vector3 playerPos = playerBody.position;
-            Vector2 mouseVec = 
-                Camera.main.ScreenToWorldPoint(inputState.mousePosition) -
-                playerPos;
-
-            var attackRotation = mouseVec.GetAngle();
             
+            // Attack physics
+            bool succeess = blackboard.askPerformAttack.CallFunc(
+                attackProfile,
+                new AttackInfo
+                {
+                    attackSourcePosition = attackPos,
+                    attackAngle =  attackRotation,
+                }
+            );
+            
+            if(succeess)
+                blackboard.askFreezeFrame.RaiseEvent(blackboard.basicAttackProfile.FreezeFrameDuration);
+            
+            attacked = true;
+        }
+
+        if (!vfxPlayed && stateDuration > BasicAttackProfile.PlayVFXTime)
+        {
+            vfxPlayed = true;
             blackboard.askPlayVFX.CallFunc(
                 blackboard.basicAttackVFX,
                 0,
                 new PlayVFXSettings()
                 {
-                    position = playerPos,
+                    position = attackPos,
                     rotation = attackRotation
                 });
-            // Attack physics
-            blackboard.askPerformAttack.CallFunc(
-                attackProfile,
-                new AttackInfo
-                {
-                    attackSourcePosition = playerPos,
-                    attackAngle =  attackRotation,
-                }
-            );
-            
-            
-            attacked = true;
-            blackboard.askFreezeFrame.RaiseEvent(blackboard.basicAttackProfile.FreezeFrameDuration);
+
         }
     }
 

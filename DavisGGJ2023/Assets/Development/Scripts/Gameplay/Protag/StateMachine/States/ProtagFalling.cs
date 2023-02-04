@@ -14,20 +14,21 @@ public class ProtagFalling : ProtagState
 
     public override void EnterState()
     {
-        heightBody.horizontalVel.x = 0f;
-        blackboard.askStopFollowingTarget.RaiseEvent();
+        transitions.SubOnHitDoDie();
     }
 
     public override void ExitState()
     {
-        blackboard.askStartFollowingTarget.RaiseEvent(blackboard.playerBodyTransform);
+        transitions.UnsubOnHitDoDie();
+        blackboard.askSetDamping.RaiseEvent(1f);
     }
 
     public override void UpdateState()
     {
-        if (Time.time - stateEntryTime > 0.1f)
+        blackboard.askSetDamping.RaiseEvent(1 + Mathf.Pow(5*stateDuration, 2f));
+        if (stateDuration > 0.1f)
         {
-            animator.SetFacing(ProtagAnimator.Facing.Down);
+            animator.SetFacing(heightBody.horizontalVel);
             animator.PlayAnimation("Falling");
         }
     }

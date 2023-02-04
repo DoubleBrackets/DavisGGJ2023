@@ -16,11 +16,13 @@ public class ProtagRunning : ProtagState
     public override void EnterState()
     {
         transitions.SubOnPrimaryDoBasicAttack();
+        transitions.SubOnHitDoDie();
     }
 
     public override void ExitState()
     {
         transitions.UnsubOnPrimaryDoBasicAttack();
+        transitions.UnsubOnHitDoDie();
     }
 
     public override void UpdateState()
@@ -31,13 +33,17 @@ public class ProtagRunning : ProtagState
 
     public override void FixedUpdateState()
     {
+        float accelT = Mathf.InverseLerp(0f,basicMovementProfile.MaxWalkSpeed, heightBody.horizontalVel.magnitude);
+        float accel = basicMovementProfile.WalkAcceleration *
+                      Mathf.Clamp01(basicMovementProfile.AccelerationCurve.Evaluate(accelT));
         
         protagMover.SimpleHorizontalMovement(
             inputState.movementVector,
             basicMovementProfile.MaxWalkSpeed,
-            basicMovementProfile.WalkAcceleration,
+            accel,
             basicMovementProfile.FrictionAcceleration,
             Time.fixedDeltaTime
         );
+        
     }
 }

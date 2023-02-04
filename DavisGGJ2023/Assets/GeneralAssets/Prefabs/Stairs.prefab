@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &5779910724442713953
 BoxCollider2D:
@@ -46,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.79313433, y: -0.7122426}
+  m_Offset: {x: 3.2242599, y: -1.232269}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9987619, y: 3.1397238}
+  m_Size: {x: 4.5, y: 4}
   m_EdgeRadius: 0
 --- !u!114 &5779910724442713955
 MonoBehaviour:
@@ -74,6 +74,7 @@ MonoBehaviour:
   coll: {fileID: 5779910724442713953}
   heightBottom: 0
   heightTop: 2
+  stairLength: 2
   lowerY: 8.236918
-  upperY: 8.236918
-  angle: 1.5707964
+  upperY: 10.236918
+  angle: 0.7853982

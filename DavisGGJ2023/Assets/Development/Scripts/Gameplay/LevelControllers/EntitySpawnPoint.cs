@@ -34,7 +34,7 @@ public class EntitySpawnPoint : MonoBehaviour
         if (heightBody)
         {
             var position = transform.position;
-            heightBody.horizontalCoords = position;
+            heightBody.horizontalCoords = position - Vector3.up * position.z;
             heightBody.height = position.z;
         }
     }

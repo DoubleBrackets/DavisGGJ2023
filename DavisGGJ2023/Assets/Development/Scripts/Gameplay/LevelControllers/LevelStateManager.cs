@@ -15,6 +15,7 @@ public class LevelStateManager : MonoBehaviour
     [SerializeField] private InputModeEventChannelSO askChangeInputMode;
     [SerializeField] private VoidEventChannelSO askSpawnAllEntities;
     [SerializeField] private VoidEventChannelSO askClearAllEntities;
+    [SerializeField] private VoidEventChannelSO askDiposeAllVFX;
 
     // Fields
     
@@ -55,7 +56,7 @@ public class LevelStateManager : MonoBehaviour
     private void RestartLevel()
     {
         if (currentOperation != null) return;
-        askClearAllEntities.RaiseEvent();
+
         currentOperation = StartCoroutine(CoroutRestartLevel());
     }
 
@@ -63,7 +64,9 @@ public class LevelStateManager : MonoBehaviour
     {
         askChangeInputMode.RaiseEvent(InputMode.Disabled);
         yield return askGetTransitionOut.CallFunc(TransitionEffect.FadeBlack, false);
-
+        
+        askDiposeAllVFX.RaiseEvent();
+        askClearAllEntities.RaiseEvent();
         LoadLevel();
         
         yield return askGetTransitionIn.CallFunc(TransitionEffect.FadeBlack, false);

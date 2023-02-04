@@ -9,10 +9,11 @@ public class BasicMovementProfileSO : DescriptionBaseSO
 
     public float FrictionAcceleration => frictionAcceleration;
 
+    public AnimationCurve AccelerationCurve => accelerationCurve;
+
     [ColorHeader("Run", ColorHeaderColor.Config)]
     [SerializeField] private float maxWalkSpeed;
     [SerializeField] private float walkAcceleration;
     [SerializeField] private float frictionAcceleration;
-    
-
+    [SerializeField] private AnimationCurve accelerationCurve;
 }

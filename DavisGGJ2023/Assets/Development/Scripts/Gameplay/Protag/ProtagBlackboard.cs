@@ -17,9 +17,11 @@ public class ProtagBlackboard : DescriptionMonoBehavior
 
     [ColorHeader("Combat")]
     [SerializeField] public AttackProfileSO basicAttackProfile;
+    [SerializeField] public CombatEntity protagCombatEntity;
 
     [ColorHeader("VFX")]
     [SerializeField] public VFXEffectProfile basicAttackVFX;
+    [SerializeField] public VFXEffectProfile deathVFX;
 
     [ColorHeader("Invoking", ColorHeaderColor.InvokingChannels, true)]
     [ColorHeader("Combat")]
@@ -28,6 +30,7 @@ public class ProtagBlackboard : DescriptionMonoBehavior
     [ColorHeader("Camera")]
     [SerializeField] public VoidEventChannelSO askStopFollowingTarget;
     [SerializeField] public TransformEventChannelSO askStartFollowingTarget;
+    [SerializeField] public FloatEventChannelSO askSetDamping;
 
     [ColorHeader("VFX")]
     [SerializeField] public PlayVFXFuncChannelSO askPlayVFX;

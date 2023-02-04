@@ -16,6 +16,13 @@ public class ProtagMainController : DescriptionMonoBehavior
         playerStateMachine = new ProtagStateMachine(blackboard);
         playerStateMachine.InitializeEntryState<ProtagIdle>();
         blackboard.InputProvider.Events.OnPausePressed += DebugReset;
+        blackboard.askSetDamping.RaiseEvent(0f);
+        blackboard.askStartFollowingTarget.RaiseEvent(blackboard.playerBodyTransform);
+    }
+
+    private void Start()
+    {
+        blackboard.askSetDamping.RaiseEvent(1f);
     }
 
     private void OnDisable()

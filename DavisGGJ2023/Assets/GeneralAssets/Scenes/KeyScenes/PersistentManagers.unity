@@ -214,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   askGetPlayVFX: {fileID: 11400000, guid: 51f84772f74fa744bb1b47695f9b3b35, type: 2}
   askGetStopVFX: {fileID: 11400000, guid: 57fd4c5e7df884b4caec7e6b52e72677, type: 2}
+  killAllVFX: {fileID: 11400000, guid: 44c9a0dd9b1355146bbc653b293a19ac, type: 2}
 --- !u!1 &294292508
 GameObject:
   m_ObjectHideFlags: 0

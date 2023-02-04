@@ -3,12 +3,12 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-public class ViewUtilWindow : EditorWindow
+public class RootGameUtilWindow : EditorWindow
 {
     [MenuItem("Tools/Root Game Utils")]
     public static void ShowWindow()
     {
-        var wnd = GetWindow<ViewUtilWindow>("Root Game Utils");
+        var wnd = GetWindow<RootGameUtilWindow>("Root Game Utils");
     }
 
     private Vector3 castPos;
@@ -79,6 +79,9 @@ public class ViewUtilWindow : EditorWindow
 
         Handles.color = cursorColor;
         Handles.DrawWireDisc(ray.origin, -Vector3.forward, 0.2f);
+
+        Handles.color = Color.green;
+        Handles.DrawWireDisc(castPos - Vector3.up * castPos.z, -Vector3.forward, 0.2f);
         
         // Repaint on mouse movement
         if (Event.current.type == EventType.MouseMove)

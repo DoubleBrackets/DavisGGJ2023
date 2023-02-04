@@ -18,11 +18,13 @@ public class ProtagIdle : ProtagState
     {
         animator.PlayAnimation("Idle");
         transitions.SubOnPrimaryDoBasicAttack();
+        transitions.SubOnHitDoDie();
     }
 
     public override void ExitState()
     {
         transitions.UnsubOnPrimaryDoBasicAttack();
+        transitions.UnsubOnHitDoDie();
     }
 
     public override void UpdateState()

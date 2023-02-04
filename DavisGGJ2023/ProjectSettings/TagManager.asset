@@ -15,7 +15,7 @@ TagManager:
   - Player
   - TerrainGround
   - TerrainWall
-  - 
+  - Hazard
   - Enemy
   - Destroyable
   - 

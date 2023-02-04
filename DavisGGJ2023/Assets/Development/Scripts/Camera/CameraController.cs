@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private VoidEventChannelSO askStopFollowingTarget;
     [SerializeField] private TransformEventChannelSO askStartFollowingTransform;
     [SerializeField] private VoidEventChannelSO lockOnTarget;
+    [SerializeField] private FloatEventChannelSO askSetDamping;
 
     [ColorHeader("Dependencies")]
     [SerializeField] private CinemachineVirtualCamera followingCamera;
@@ -18,6 +19,7 @@ public class CameraController : MonoBehaviour
         askStartFollowingTransform.OnRaised += StartFollowingTarget;
         askStopFollowingTarget.OnRaised += StopFollowingTarget;
         lockOnTarget.OnRaised += LockOnTarget;
+        askSetDamping.OnRaised += SetDamping;
     }
 
     private void OnDisable()
@@ -25,6 +27,14 @@ public class CameraController : MonoBehaviour
         askStartFollowingTransform.OnRaised -= StartFollowingTarget;
         askStopFollowingTarget.OnRaised -= StopFollowingTarget;
         lockOnTarget.OnRaised -= LockOnTarget;
+        askSetDamping.OnRaised -= SetDamping;
+    }
+
+    private void SetDamping(float damping)
+    {
+        var following = followingCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
+        Debug.Log(damping);
+        following.Damping = new Vector3(damping, damping, 1f);
     }
 
     private void LockOnTarget()

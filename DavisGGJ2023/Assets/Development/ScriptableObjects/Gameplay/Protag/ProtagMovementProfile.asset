@@ -13,6 +13,57 @@ MonoBehaviour:
   m_Name: ProtagMovementProfile
   m_EditorClassIdentifier: 
   description: 
-  maxWalkSpeed: 6
-  walkAcceleration: 50
+  maxWalkSpeed: 6.5
+  walkAcceleration: 45
   frictionAcceleration: 40
+  accelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.003162384
+      value: 1.0188599
+      inSlope: -0.28578097
+      outSlope: -0.28578097
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6099604
+      value: 0.84544855
+      inSlope: -0.34255886
+      outSlope: -0.34255886
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.4358252
+    - serializedVersion: 3
+      time: 0.75928044
+      value: 0.32786983
+      inSlope: -2.7056608
+      outSlope: -2.7056608
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8260027
+      value: 0.22980921
+      inSlope: -0.58313876
+      outSlope: -0.58313876
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0031128
+      value: 0.19959259
+      inSlope: -0.17060927
+      outSlope: -0.17060927
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
