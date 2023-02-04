@@ -6,4 +6,6 @@ public class LevelPathway
     [SerializeField] private Transform entryPoint;
     /*[SerializeField] private */
     
+    
+    
 }

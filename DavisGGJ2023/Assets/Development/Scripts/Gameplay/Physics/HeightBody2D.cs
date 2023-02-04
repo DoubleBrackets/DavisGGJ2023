@@ -275,6 +275,6 @@ public class HeightBody2D : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(horizontalCoords, 0.5f);
+        Gizmos.DrawWireSphere(horizontalCoords, 0.3f);
     }
 }

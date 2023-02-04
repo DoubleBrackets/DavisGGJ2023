@@ -15,11 +15,18 @@ public class ProtagMainController : DescriptionMonoBehavior
     {
         playerStateMachine = new ProtagStateMachine(blackboard);
         playerStateMachine.InitializeEntryState<ProtagIdle>();
+        blackboard.InputProvider.Events.OnPausePressed += DebugReset;
     }
 
     private void OnDisable()
     {
         playerStateMachine.DisableStateMachine();
+        blackboard.InputProvider.Events.OnPausePressed -= DebugReset;
+    }
+
+    private void DebugReset()
+    {
+        blackboard.askRestartLevel.RaiseEvent();
     }
 
     private void Update()

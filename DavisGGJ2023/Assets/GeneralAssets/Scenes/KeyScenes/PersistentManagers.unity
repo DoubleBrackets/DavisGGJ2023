@@ -393,7 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 
   fadeImage: {fileID: 2005422394}
-  duration: 2
+  duration: 1.25
 --- !u!1 &859526688
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: 
-  askInputStateChange: {fileID: 11400000, guid: 15c5cef5a764f1e4299f23c6526eebe4, type: 2}
+  askInputModeChange: {fileID: 11400000, guid: 15c5cef5a764f1e4299f23c6526eebe4, type: 2}
   inputAsset: {fileID: -944628639613478452, guid: 100b460020a15704692cc0ec34331d8a, type: 3}
   inputProvider: {fileID: 11400000, guid: 2bb928eea77c68d43bf71d37ca04ca86, type: 2}
 --- !u!1 &1085148899

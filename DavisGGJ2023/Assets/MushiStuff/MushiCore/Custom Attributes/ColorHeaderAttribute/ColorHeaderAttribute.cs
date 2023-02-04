@@ -18,17 +18,20 @@ public class ColorHeaderAttribute : PropertyAttribute
     public readonly ColorHeaderColor color;
     public readonly float yOffset;
     public readonly float padding;
+    public readonly bool showDivider;
 
     /// <summary>
     /// Draw a colored header label in the inspector
     /// </summary>
     /// <param name="text">Display text</param>
     /// <param name="color">Preset color type. More color types can be added through extending enum type. Changeable through config SOs</param>
+    /// <param name="showDivider">Draw a divider line above the header text</param>
     /// <param name="padding">Space above and below header (is multiplied by default single line height)</param>
     /// <param name="yOffset">Y Offset (is multiplied by default single line height)</param>
     public ColorHeaderAttribute(
         string text,
         ColorHeaderColor color = ColorHeaderColor.Normal,
+        bool showDivider = false,
         float padding = defaultPadding,
         float yOffset = defaultYOffset
     )
@@ -37,5 +40,6 @@ public class ColorHeaderAttribute : PropertyAttribute
         this.color = color;
         this.padding = padding;
         this.yOffset = yOffset;
+        this.showDivider = showDivider;
     }
 }

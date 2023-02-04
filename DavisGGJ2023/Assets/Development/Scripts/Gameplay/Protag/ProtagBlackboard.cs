@@ -21,7 +21,7 @@ public class ProtagBlackboard : DescriptionMonoBehavior
     [ColorHeader("VFX")]
     [SerializeField] public VFXEffectProfile basicAttackVFX;
 
-    [ColorHeader("Invoking", ColorHeaderColor.InvokingChannels)]
+    [ColorHeader("Invoking", ColorHeaderColor.InvokingChannels, true)]
     [ColorHeader("Combat")]
     [SerializeField] public PerformAttackFuncChannelSO askPerformAttack;
     
@@ -32,8 +32,11 @@ public class ProtagBlackboard : DescriptionMonoBehavior
     [ColorHeader("VFX")]
     [SerializeField] public PlayVFXFuncChannelSO askPlayVFX;
     [SerializeField] public FloatEventChannelSO askFreezeFrame;
+
+    [ColorHeader("Level Control")]
+    [SerializeField] public VoidEventChannelSO askRestartLevel;
     
-    [ColorHeader("State")]
+    [ColorHeader("State", showDivider: true)]
     [ReadOnly] public float time;
     
 

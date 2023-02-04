@@ -37,6 +37,11 @@ public class SceneGrabber : EditorWindow
 
     private string folderPath = "Assets/Scenes";
 
+    private void OnEnable()
+    {
+        folderPath = EditorPrefs.GetString("SceneGrabberPath");
+    }
+
     public void CreateGUI()
     {
         // Each editor window contains a root VisualElement object
@@ -59,6 +64,7 @@ public class SceneGrabber : EditorWindow
         searchField.RegisterValueChangedCallback((changeEvent) =>
         {
             folderPath = changeEvent.newValue;
+            EditorPrefs.SetString("SceneGrabberPath", folderPath);
             GenerateSceneListFromAssets();
         });
 

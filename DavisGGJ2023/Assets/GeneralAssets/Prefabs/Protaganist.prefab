@@ -232,9 +232,6 @@ MonoBehaviour:
   collisionOffset: 0.001
   skinWidth: 0.03
   maxResolves: 10
-  heightChangerMask:
-    serializedVersion: 2
-    m_Bits: 1024
   shadowTransform: {fileID: 769951830}
   maxShadowCastDist: 4
   horizontalCoords: {x: 0, y: 0}
@@ -404,10 +401,12 @@ MonoBehaviour:
   playerBodyTransform: {fileID: 8116578794812904866}
   basicAttackProfile: {fileID: 11400000, guid: 0f6158eb6b7a4604aae86f3775689adc, type: 2}
   basicAttackVFX: {fileID: 11400000, guid: 008602e7493325c4aa9504dfedc8987e, type: 2}
+  askPerformAttack: {fileID: 11400000, guid: 84d405ec6f3b1c840bef7b31f047599d, type: 2}
   askStopFollowingTarget: {fileID: 11400000, guid: 17289f9e3db537a47b7ee714d584070d, type: 2}
   askStartFollowingTarget: {fileID: 11400000, guid: 1282d8e51b46f4e4c88729959b754893, type: 2}
   askPlayVFX: {fileID: 11400000, guid: 51f84772f74fa744bb1b47695f9b3b35, type: 2}
   askFreezeFrame: {fileID: 11400000, guid: 8f531660faabd364ea7f87e06d7dad6b, type: 2}
+  askRestartLevel: {fileID: 11400000, guid: 6b2093bf2dc6d84418525143b4cd31c6, type: 2}
   time: 0
 --- !u!114 &652174787
 MonoBehaviour:
@@ -516,7 +515,7 @@ Transform:
   - {fileID: 8116578795884855008}
   - {fileID: 769951830}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8841556621968906445
 GameObject:

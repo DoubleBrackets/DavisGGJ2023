@@ -1,6 +1,78 @@
+using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
 public class LevelStateManager : MonoBehaviour
 {
-    //[SerializeField] private Le
+    [ColorHeader("Listening", ColorHeaderColor.ListeningChannels)]
+    [SerializeField] private VoidEventChannelSO askRestartLevel;
+    [SerializeField] private VoidEventChannelSO onLevelLoaded;
+
+    [ColorHeader("Invoking", ColorHeaderColor.InvokingChannels)]
+    [SerializeField] private TransitionOutFuncChannelSO askGetTransitionOut;
+    [SerializeField] private TransitionInFuncChannelSO askGetTransitionIn;
+    [SerializeField] private InputModeEventChannelSO askChangeInputMode;
+    [SerializeField] private VoidEventChannelSO askSpawnAllEntities;
+    [SerializeField] private VoidEventChannelSO askClearAllEntities;
+
+    // Fields
+    
+    private Coroutine currentOperation;
+
+    private void OnEnable()
+    {
+        onLevelLoaded.OnRaised += Setup;
+        askRestartLevel.OnRaised += RestartLevel;
+    }
+    
+    private void OnDisable()
+    {
+        onLevelLoaded.OnRaised -= Setup;
+        askRestartLevel.OnRaised -= RestartLevel;
+    }
+
+    private void Setup()
+    {
+        BeginLevel();
+    }
+
+    private void BeginLevel()
+    {
+        if (currentOperation != null) return;
+        askChangeInputMode.RaiseEvent(InputMode.Disabled);
+        currentOperation = StartCoroutine(CoroutBeginLevel());
+    }
+
+    private IEnumerator CoroutBeginLevel()
+    {
+        LoadLevel();
+        yield return new WaitForSeconds(0.5f);
+        askChangeInputMode.RaiseEvent(InputMode.Gameplay);
+        currentOperation = null;
+    }
+
+    private void RestartLevel()
+    {
+        if (currentOperation != null) return;
+        askClearAllEntities.RaiseEvent();
+        currentOperation = StartCoroutine(CoroutRestartLevel());
+    }
+
+    private IEnumerator CoroutRestartLevel()
+    {
+        askChangeInputMode.RaiseEvent(InputMode.Disabled);
+        yield return askGetTransitionOut.CallFunc(TransitionEffect.FadeBlack, false);
+
+        LoadLevel();
+        
+        yield return askGetTransitionIn.CallFunc(TransitionEffect.FadeBlack, false);
+        askChangeInputMode.RaiseEvent(InputMode.Gameplay);
+        currentOperation = null;
+    }
+
+    private void LoadLevel()
+    {
+        askSpawnAllEntities.RaiseEvent();
+    }
 }

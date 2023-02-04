@@ -48,6 +48,12 @@ namespace MushiCore.Editor
 
         private void DrawHeader(Rect position, ColorHeaderAttribute attr)
         {
+            if (attr.showDivider)
+            {
+                var line = position;
+                line.height = 1f;
+                EditorGUI.DrawRect(line, Color.gray);
+            }
             // Y Offset
             position.yMin += EditorGUIUtility.singleLineHeight * attr.yOffset;
             // Indent offset

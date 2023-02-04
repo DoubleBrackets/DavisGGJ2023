@@ -12,7 +12,7 @@ public class PersistentInputManager : DescriptionMonoBehavior
 {
     [ColorHeader("Listening", ColorHeaderColor.ListeningChannels)]
     [ColorHeader("Input State Change Ask")] 
-    [SerializeField] private InputStateEventChannelSO askInputStateChange;
+    [SerializeField] private InputModeEventChannelSO askInputModeChange;
     
     [ColorHeader("Input Dependencies", ColorHeaderColor.Dependencies)]
     [SerializeField] private InputActionAsset inputAsset;
@@ -24,16 +24,16 @@ public class PersistentInputManager : DescriptionMonoBehavior
     private InputMode currentInputMode;
 
     private void OnEnable() {
-        askInputStateChange.OnRaised += SwitchInputState;
+        askInputModeChange.OnRaised += SwitchInputMode;
         inputAsset.Enable();
     }
 
     private void OnDisable()
     {
-        askInputStateChange.OnRaised -= SwitchInputState;
+        askInputModeChange.OnRaised -= SwitchInputMode;
     }
 
-    private void SwitchInputState(InputMode newInputMode)
+    private void SwitchInputMode(InputMode newInputMode)
     {
         switch (newInputMode)
         {
@@ -51,7 +51,7 @@ public class PersistentInputManager : DescriptionMonoBehavior
         if (currentInputMode != newInputMode)
         {
             currentInputMode = newInputMode;
-            askInputStateChange.RaiseEvent(newInputMode);
+            askInputModeChange.RaiseEvent(newInputMode);
         }
     }
 

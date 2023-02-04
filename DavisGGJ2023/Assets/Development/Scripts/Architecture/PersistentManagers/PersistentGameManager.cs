@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PersistentGameManager : DescriptionMonoBehavior
@@ -14,6 +15,11 @@ public class PersistentGameManager : DescriptionMonoBehavior
     {
         LoadPersistentScenes();
         LoadEntryScene();
+    }
+
+    private void OnDisable()
+    {
+        startupBoard.EntryGameLevel = null;
     }
 
     private void LoadEntryScene()
