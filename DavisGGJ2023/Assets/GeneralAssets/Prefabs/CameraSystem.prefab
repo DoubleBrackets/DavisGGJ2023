@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 4.21875
+    OrthographicSize: 8.4375
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -80,6 +80,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3749249567574938381}
+  - component: {fileID: 1086971150}
   m_Layer: 0
   m_Name: CameraSystem
   m_TagString: Untagged
@@ -105,6 +106,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1086971150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3749249567574938380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbce1ed2d0cdaf34e80a7706ddb1b740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  askStopFollowingTarget: {fileID: 11400000, guid: 17289f9e3db537a47b7ee714d584070d, type: 2}
+  askStartFollowingTransform: {fileID: 11400000, guid: 1282d8e51b46f4e4c88729959b754893, type: 2}
+  lockOnTarget: {fileID: 11400000, guid: 0bb4d449ca1db304d8d3a60414944150, type: 2}
+  followingCamera: {fileID: 3749249567533778421}
 --- !u!1 &3749249568256054010
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +185,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.21875
+  orthographic size: 8.4375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -272,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
-  m_AssetsPPU: 32
+  m_AssetsPPU: 16
   m_RefResolutionX: 480
   m_RefResolutionY: 270
   m_CropFrame: 3
@@ -420,4 +437,4 @@ MonoBehaviour:
   - {fileID: 2100000, guid: ee03b99ab6352044894a5f21c1267ea0, type: 2}
   - {fileID: 2100000, guid: c678694411f626141ad8895b6f7333ac, type: 2}
   pixelResolution: {x: 480, y: 270}
-  pixelsPerUnit: 32
+  pixelsPerUnit: 16

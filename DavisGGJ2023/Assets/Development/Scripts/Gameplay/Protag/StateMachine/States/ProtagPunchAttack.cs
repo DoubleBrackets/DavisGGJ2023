@@ -22,6 +22,11 @@ public class ProtagPunchAttack : ProtagState
 
     public override void EnterState()
     {
+        Vector2 mouseVec = 
+            Camera.main.ScreenToWorldPoint(inputState.mousePosition) -
+            playerBody.transform.position;
+        
+        animator.SetFacing(mouseVec);
         animator.PlayAnimation("Idle");
         attacked = false;
     }
@@ -35,19 +40,33 @@ public class ProtagPunchAttack : ProtagState
     {
         if (!attacked && stateDuration > BasicAttackProfile.WindupDuration)
         {
+            var attackProfile = blackboard.basicAttackProfile;
+            Vector3 playerPos = playerBody.position;
             Vector2 mouseVec = 
                 Camera.main.ScreenToWorldPoint(inputState.mousePosition) -
-                playerBody.transform.position;
+                playerPos;
+
+            var attackRotation = mouseVec.GetAngle();
             
             blackboard.askPlayVFX.CallFunc(
                 blackboard.basicAttackVFX,
                 0,
                 new PlayVFXSettings()
                 {
-                    position = playerBody.position,
-                    rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(mouseVec.y, mouseVec.x))
+                    position = playerPos,
+                    rotation = attackRotation
                 });
-            // Attack or whtaever
+            // Attack physics
+            blackboard.askPerformAttack.CallFunc(
+                attackProfile,
+                new AttackInfo
+                {
+                    attackSourcePosition = playerPos,
+                    attackAngle =  attackRotation,
+                }
+            );
+            
+            
             attacked = true;
             blackboard.askFreezeFrame.RaiseEvent(blackboard.basicAttackProfile.FreezeFrameDuration);
         }

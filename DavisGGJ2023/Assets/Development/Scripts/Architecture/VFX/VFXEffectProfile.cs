@@ -2,14 +2,11 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Gameplay/PlayVFXProfile")]
-public class PlayVFXProfile : ScriptableObject
+public class VFXEffectProfile : ScriptableObject
 {
     public VFXEffect VFX => vfx;
 
-    public string VFXInstanceID => vfxInstanceID;
-
     [SerializeField] private VFXEffect vfx;
-    [SerializeField] private string vfxInstanceID;
 }
 
 public struct PlayVFXSettings

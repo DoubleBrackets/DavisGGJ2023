@@ -58,6 +58,11 @@ namespace MushiCore.Editor
         {
             instance = this;
         }
+        
+        private void OnEnable()
+        {
+            instance = this;
+        }
 
         private void OnDestroy()
         {

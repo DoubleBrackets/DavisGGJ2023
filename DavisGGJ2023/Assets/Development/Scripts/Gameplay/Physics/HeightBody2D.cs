@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Internal;
 
 public class HeightBody2D : MonoBehaviour
 {
@@ -13,13 +14,10 @@ public class HeightBody2D : MonoBehaviour
     [ColorHeader("Collision Config", ColorHeaderColor.Config)]
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask wallMask;
-    [SerializeField] private float colliderHeight;
-    [SerializeField] private float collisionOffset;
-    [SerializeField] private float skinWidth;
-    [SerializeField] private int maxResolves;
-
-    [ColorHeader("Height Changers", ColorHeaderColor.Config)]
-    [SerializeField] private LayerMask heightChangerMask;
+    [SerializeField] private float colliderHeight = 1;
+    [SerializeField] private float collisionOffset = 0.001f;
+    [SerializeField] private float skinWidth = 0.03f;
+    [SerializeField] private int maxResolves = 10;
 
     [ColorHeader("Shadow", ColorHeaderColor.Config)]
     [SerializeField] private Transform shadowTransform;
@@ -32,8 +30,8 @@ public class HeightBody2D : MonoBehaviour
     
     public float height;
     public float verticalVelocity;
-    public float gravityAccel;
-    public float terminalVelocity;
+    public float gravityAccel = 13;
+    public float terminalVelocity = 15;
 
     public bool isGrounded;
     private float xTilt;
@@ -42,7 +40,7 @@ public class HeightBody2D : MonoBehaviour
     public Vector2 TransformPosition => targetTransform.position;
     
     // Events
-    public event Action<Vector2> onHorizontalCollide;
+    public event Action<Vector2, Vector2> onHorizontalCollide;
     
     private void OnEnable()
     {
@@ -62,13 +60,14 @@ public class HeightBody2D : MonoBehaviour
         if (isGrounded)
         {
             Vector2 startStep = horizontalStep;
+            Vector2 startVel = horizontalVel;
             
             HorizontalCollisions(ref horizontalStep, 0);
             
             Vector2 impactVel = (startStep - horizontalStep) / Time.fixedDeltaTime;
             if (impactVel != Vector2.zero)
             {
-                onHorizontalCollide?.Invoke(impactVel);
+                onHorizontalCollide?.Invoke(impactVel, startVel);
             }
         }
 
@@ -82,7 +81,7 @@ public class HeightBody2D : MonoBehaviour
     {
         RecalculatePosition();
     }
-    #endif
+#endif
 
     private void ApplyForces()
     {

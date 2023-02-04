@@ -10,7 +10,7 @@ public class SimpleParticleEffect : VFXEffect
     private bool isPlaying = true;
     private float startTime;
     
-    public override void PlayEffect(PlayVFXProfile profile, PlayVFXSettings settings)
+    public override void PlayEffect(VFXEffectProfile profile, PlayVFXSettings settings)
     {
         this.settings = settings;
         transform.position = settings.position;

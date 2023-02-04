@@ -26,7 +26,7 @@ public class ProtagAnimator : MonoBehaviour
     {
         if (dir == Vector2.zero) return;
 
-        if (Mathf.Abs(dir.x) > 0f)
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y) - 0.01f)
         {
             currentFacing = Facing.Side;
             spriteRen.flipX = dir.x < 0f;

@@ -42,7 +42,7 @@ public class PersistentVFXManager : MonoBehaviour
         }
     }
 
-    private VFXEffect StopVFX(PlayVFXProfile profile, int id, PlayVFXSettings playVFXSettings)
+    private VFXEffect StopVFX(VFXEffectProfile profile, int id, PlayVFXSettings playVFXSettings)
     {
         string effectname = profile.name + id;
         VFXEffect res = null;
@@ -58,7 +58,7 @@ public class PersistentVFXManager : MonoBehaviour
         return res;
     }
 
-    private VFXEffect PlayVFX(PlayVFXProfile profile, int id, PlayVFXSettings playVFXSettings)
+    private VFXEffect PlayVFX(VFXEffectProfile profile, int id, PlayVFXSettings playVFXSettings)
     {
         string effectname = profile.name + id;
         VFXEffect createdEffect = null;

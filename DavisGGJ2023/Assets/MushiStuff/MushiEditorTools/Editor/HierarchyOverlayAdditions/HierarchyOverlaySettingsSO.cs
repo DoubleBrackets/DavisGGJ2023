@@ -8,11 +8,13 @@ using UnityEngine;
 
 #endregion
 
+[ExecuteInEditMode]
 public class HierarchyOverlaySettingsSO : ScriptableObject
 {
     public const string defaultCreationPath = "Assets/EditorPreferenceSettings/Editor/HierarchyOverlaySettings.asset";
         
     private static HierarchyOverlaySettingsSO instance;
+    private static bool searchedFor = false;
 
     public static HierarchyOverlaySettingsSO SettingsInstance
     {
@@ -27,6 +29,11 @@ public class HierarchyOverlaySettingsSO : ScriptableObject
     }
 
     public void OnValidate()
+    {
+        instance = this;
+    }
+
+    public void OnEnable()
     {
         instance = this;
     }

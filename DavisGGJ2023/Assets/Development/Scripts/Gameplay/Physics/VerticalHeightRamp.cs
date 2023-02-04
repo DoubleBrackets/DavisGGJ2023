@@ -8,9 +8,9 @@ public class VerticalHeightRamp : MonoBehaviour
     [SerializeField] private float heightBottom;
     [SerializeField] private float heightTop;
 
-    [SerializeField] private float lowerY;
-    [SerializeField] private float upperY;
-    [SerializeField] private float angle;
+    [ReadOnly,SerializeField] private float lowerY;
+    [ReadOnly,SerializeField] private float upperY;
+    [ReadOnly,SerializeField] private float angle;
 
     public float Angle => angle;
 

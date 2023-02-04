@@ -15,13 +15,16 @@ public class ProtagBlackboard : DescriptionMonoBehavior
     [SerializeField] public BasicMovementProfileSO basicMovementProfile;
     [SerializeField] public Transform playerBodyTransform;
 
-    [ColorHeader("Gameplay")]
+    [ColorHeader("Combat")]
     [SerializeField] public AttackProfileSO basicAttackProfile;
 
     [ColorHeader("VFX")]
-    [SerializeField] public PlayVFXProfile basicAttackVFX;
+    [SerializeField] public VFXEffectProfile basicAttackVFX;
 
     [ColorHeader("Invoking", ColorHeaderColor.InvokingChannels)]
+    [ColorHeader("Combat")]
+    [SerializeField] public PerformAttackFuncChannelSO askPerformAttack;
+    
     [ColorHeader("Camera")]
     [SerializeField] public VoidEventChannelSO askStopFollowingTarget;
     [SerializeField] public TransformEventChannelSO askStartFollowingTarget;
