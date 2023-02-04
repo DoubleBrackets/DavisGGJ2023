@@ -100,11 +100,11 @@ public class AttackManager : MonoBehaviour
             
             Gizmos.DrawLine(
                 box.center + extents, 
-                box.size - extents);
+                box.center - extents);
             
             Gizmos.DrawLine(
                 box.center + extentsDiag, 
-                box.size - extentsDiag);
+                box.center - extentsDiag);
 
             if (Time.time - box.createTime > 0.5f)
             {
