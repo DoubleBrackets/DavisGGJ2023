@@ -38,9 +38,9 @@ public class ProtagBlackboard : DescriptionMonoBehavior
 
     [ColorHeader("Level Control")]
     [SerializeField] public VoidEventChannelSO askRestartLevel;
-    
+
     [ColorHeader("State", showDivider: true)]
-    [ReadOnly] public float time;
+    [ReadOnly] public float basicAttackFinishTime;
     
 
     public void UpdateInput()

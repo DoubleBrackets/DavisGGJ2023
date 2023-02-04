@@ -42,15 +42,20 @@ public class LevelStateManager : MonoBehaviour
 
     private void TravelToNewLevel(LevelEntranceSO nextLevel)
     {
+        var previousLevel = gameState.CurrentlyLoadedLevel;
         askChangeInputMode.RaiseEvent(InputMode.Disabled);
         bool successful = askLoadGameLevel.CallFunc(
             nextLevel.LevelToEnter,
             TransitionEffect.FadeBlack,
             TransitionEffect.FadeBlack,
             Cleanup);
-        
-        if(successful)
+
+        if (successful)
+        {
+            gameState.LevelCleared(previousLevel);
             gameState.TargetEntrance = nextLevel;
+        }
+            
     }
 
     private void Setup()
@@ -102,6 +107,8 @@ public class LevelStateManager : MonoBehaviour
     private void LoadLevel()
     {
         askSpawnPlayer.RaiseEvent(gameState.TargetEntrance);
-        askSpawnAllEntities.RaiseEvent();
+        
+        if(!gameState.IsCurrentLevelCleared())
+            askSpawnAllEntities.RaiseEvent();
     }
 }

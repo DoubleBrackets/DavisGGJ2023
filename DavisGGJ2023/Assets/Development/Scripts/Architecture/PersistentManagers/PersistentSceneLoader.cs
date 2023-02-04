@@ -61,7 +61,7 @@ public class PersistentSceneLoader : DescriptionMonoBehavior
     private bool LoadGameLevel(GameLevelSO level, TransitionEffect transitionOut, TransitionEffect transitionIn, Action loadScreenActions)
     {
         
-        bool didLoad = LoadScene(level.name, 0, transitionOut, transitionIn, true);
+        bool didLoad = LoadScene(level.name, 0, transitionOut, transitionIn, true, loadScreenActions);
         if (didLoad)
         {
             gameState.CurrentlyLoadedLevel = level;
@@ -83,6 +83,7 @@ public class PersistentSceneLoader : DescriptionMonoBehavior
         yield return askTransitionOut.CallFunc(transitionOut, false);
         
         loadScreenActions?.Invoke();
+        
         // Loading unloading scenes
         var unloadHandler = new AsyncOperation();
         bool existingScene = currentScenes.ContainsKey(sceneLayer);

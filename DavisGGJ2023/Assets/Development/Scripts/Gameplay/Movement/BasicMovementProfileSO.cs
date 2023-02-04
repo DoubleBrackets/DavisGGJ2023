@@ -16,4 +16,9 @@ public class BasicMovementProfileSO : DescriptionBaseSO
     [SerializeField] private float walkAcceleration;
     [SerializeField] private float frictionAcceleration;
     [SerializeField] private AnimationCurve accelerationCurve;
+
+    [ColorHeader("Dash", ColorHeaderColor.Config)]
+    [SerializeField] private float dashVel;
+    [SerializeField] private float dashDuration;
+    [SerializeField] private float dashCooldown;
 }

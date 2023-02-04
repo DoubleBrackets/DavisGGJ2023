@@ -20,4 +20,5 @@ public struct AttackInfo
 {
     public Vector3 attackSourcePosition;
     public Quaternion attackAngle;
+    public int tag;
 }

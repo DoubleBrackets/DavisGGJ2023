@@ -19,6 +19,7 @@ public class DialogueViewChannelDirector : DialogueViewBase
     [SerializeField] private RunYarnOptionEventChannelSO onRunOptions;
     [SerializeField] private ActionEventChannelSO onDismissLine;
     [SerializeField] private VoidEventChannelSO onUserRequestedViewAdvancement;
+    [SerializeField] private InputModeEventChannelSO askSetInputMode;
 
     [ColorHeader("Listening", ColorHeaderColor.ListeningChannels)]
     [SerializeField] private VoidEventChannelSO askInterruptLine;
@@ -26,12 +27,14 @@ public class DialogueViewChannelDirector : DialogueViewBase
     public override void DialogueStarted()
     {
         onDialogueStarted.RaiseEvent();
+        askSetInputMode.RaiseEvent(InputMode.UI);
         askInterruptLine.OnRaised += requestInterrupt;
     }
 
     public override void DialogueComplete()
     {
         onDialogueComplete.RaiseEvent();
+        askSetInputMode.RaiseEvent(InputMode.Gameplay);
         askInterruptLine.OnRaised -= requestInterrupt;
     }
 

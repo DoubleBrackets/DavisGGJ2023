@@ -46,14 +46,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   askTravelLevels: {fileID: 11400000, guid: 745383e6473f3b74f8251c375a57489d, type: 2}
+  askStartDialogue: {fileID: 11400000, guid: 7ffbc6a71b18c5b4ab8a592fa95d37c8, type: 2}
   askSpawnPlayer: {fileID: 11400000, guid: 6b3c538ec80159e4e9dbfc449066ec71, type: 2}
   askClearAllEntities: {fileID: 11400000, guid: 6c8c7a00932d62845b89209c5ea21088, type: 2}
   entrance: {fileID: 0}
   exit: {fileID: 0}
+  gameState: {fileID: 11400000, guid: 512ab1ba90c8b5146963b220cf4791c8, type: 2}
   protagPrefab: {fileID: 8116578795942953534, guid: 4f24f564893bce140a192d976e2c8940, type: 3}
   playerMask:
     serializedVersion: 2
     m_Bits: 128
+  dialogueNodeWhenLeaveWithoutClearing: LeaveBeforeLevelCleared
 --- !u!61 &1795053032
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -10724,10 +10724,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1795053033, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
-      propertyPath: m_BodyType
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8940716640837822157, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
       propertyPath: m_Name
       value: PlayerSpawnPoint
@@ -10777,6 +10773,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 1795053033, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
+    - {fileID: 0}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}

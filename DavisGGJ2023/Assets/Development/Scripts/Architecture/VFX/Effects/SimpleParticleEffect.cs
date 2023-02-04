@@ -34,8 +34,7 @@ public class SimpleParticleEffect : VFXEffect
     public override void DisposeEffect()
     {
         settings.stopEvent -= StopEffect;
-        if(gameObject != null)
-            Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     public override void UpdateVFX()

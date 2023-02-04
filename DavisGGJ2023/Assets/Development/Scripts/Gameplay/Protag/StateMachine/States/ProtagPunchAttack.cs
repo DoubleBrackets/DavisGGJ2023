@@ -27,7 +27,6 @@ public class ProtagPunchAttack : ProtagState
     public override void EnterState()
     {
         attackPos = playerBody.position + Vector3.up;
-            
         mouseVec = 
             Camera.main.ScreenToWorldPoint(inputState.mousePosition) -
             attackPos;
@@ -46,7 +45,7 @@ public class ProtagPunchAttack : ProtagState
     public override void ExitState()
     {
         heightBody.gravityEnabled = true;
-        
+        blackboard.basicAttackFinishTime = Time.time;
         transitions.UnsubOnHitDoDie();
     }
 

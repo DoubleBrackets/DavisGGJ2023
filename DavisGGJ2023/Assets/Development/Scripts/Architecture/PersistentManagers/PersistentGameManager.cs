@@ -20,16 +20,9 @@ public class PersistentGameManager : DescriptionMonoBehavior
     private void OnDisable()
     {
         
-        ResetGameState();
+        gameState.ResetValues();
     }
-    
-    private void ResetGameState()
-    {
-        gameState.TargetEntrance = null;
-        gameState.CurrentlyLoadedLevel = null;
-        gameState.EntryGameLevel = null;
-    }
-    
+
     private void LoadEntryScene()
     {
         if (gameState.EntryGameLevel == null)

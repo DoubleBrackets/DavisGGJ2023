@@ -7,6 +7,7 @@ public class LevelEntranceExit : MonoBehaviour
 {
     [ColorHeader("Invoking", ColorHeaderColor.InvokingChannels)]
     [SerializeField] private LevelEntranceEventChannelSO askTravelLevels;
+    [SerializeField] private StringEventChannelSO askStartDialogue;
 
     [ColorHeader("Listening", ColorHeaderColor.ListeningChannels)]
     [SerializeField] private LevelEntranceEventChannelSO askSpawnPlayer;
@@ -15,10 +16,12 @@ public class LevelEntranceExit : MonoBehaviour
     [ColorHeader("Dependencies")]
     [SerializeField] private LevelEntranceSO entrance;
     [SerializeField] private LevelEntranceSO exit;
+    [SerializeField] private GameStateSO gameState;
 
     [ColorHeader("Config")]
     [SerializeField] private GameObject protagPrefab;
     [SerializeField] private LayerMask playerMask;
+    [SerializeField] private string dialogueNodeWhenLeaveWithoutClearing;
     
     private GameObject instance;
 
@@ -41,8 +44,17 @@ public class LevelEntranceExit : MonoBehaviour
         if (!spawned) return;
         if (((1 << other.gameObject.layer) | playerMask) == playerMask)
         {
-            if(exit != null)
-                askTravelLevels.RaiseEvent(exit);
+            if (exit != null)
+            {
+                if (gameState.CurrentEnemyCount == 0)
+                {
+                    askTravelLevels.RaiseEvent(exit);
+                }
+                else
+                {
+                    askStartDialogue.RaiseEvent(dialogueNodeWhenLeaveWithoutClearing);
+                }
+            }
         }
     }
     

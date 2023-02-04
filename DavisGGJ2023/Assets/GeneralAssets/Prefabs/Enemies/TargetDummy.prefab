@@ -328,6 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2593344243470913023}
   - component: {fileID: 2593344243470912960}
+  - component: {fileID: 4666667949481312535}
   m_Layer: 0
   m_Name: TargetDummy
   m_TagString: Untagged
@@ -371,6 +372,19 @@ MonoBehaviour:
   staggeredSprite: {fileID: -4587029418076303773, guid: d58ec74f16a79454c9e14e7642352c02, type: 3}
   askPlayVFX: {fileID: 11400000, guid: 51f84772f74fa744bb1b47695f9b3b35, type: 2}
   deathVFX: {fileID: 11400000, guid: 77304042d81de3449b2af73313b64d50, type: 2}
+--- !u!114 &4666667949481312535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2593344243470912961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d950adf25cd4499c29f1b555b80aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 11400000, guid: 512ab1ba90c8b5146963b220cf4791c8, type: 2}
 --- !u!1 &2593344243617032025
 GameObject:
   m_ObjectHideFlags: 0

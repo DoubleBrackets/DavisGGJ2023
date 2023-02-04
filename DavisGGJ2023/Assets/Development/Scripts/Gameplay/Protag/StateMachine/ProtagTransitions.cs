@@ -58,7 +58,8 @@ public class ProtagTransitions : TransitionTable<ProtagBlackboard>
 
     private void TryToBasicAttack()
     {
-        context.ForceTransition(GetState<ProtagPunchAttack>());
+        if(Time.time - blackboard.basicAttackFinishTime > blackboard.basicAttackProfile.Cooldown)
+            context.ForceTransition(GetState<ProtagPunchAttack>());
     }
     
     public void UnsubOnPrimaryDoBasicAttack()

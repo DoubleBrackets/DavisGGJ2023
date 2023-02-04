@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+
 using System;
 using UnityEditor;
 using UnityEngine;
@@ -15,7 +15,7 @@ public class ColdStartup : MonoBehaviour
     [SerializeField] private string persistentManagersSceneName;
 
     private string thisSceneName;
-    
+#if UNITY_EDITOR
     private void OnEnable()
     {
         var persistentManagerScene = SceneManager.GetSceneByName(persistentManagersSceneName);
@@ -37,6 +37,5 @@ public class ColdStartup : MonoBehaviour
         var operation = SceneManager.LoadSceneAsync(persistentManagersSceneName, LoadSceneMode.Single);
     }
 
-
-}
 #endif
+}
