@@ -1,10 +1,11 @@
 ﻿title: Start
 tags:
 ---
-<<declare $TestValue to 69>>
-Game: WELCOME TO THE GGJ YOUR NUMBER IS {$TestValue}
--> ME: Wait What?
-    Game: YEP
--> ME: OKEEE
-    Game: UWU
+???: So... it begins
+-> ME: I'm ready 
+    ???: This is your chance.
+    ???: Fight!
+-> ME: Do I have a choice?
+    ???: No
+    ???: They took everything!
 ===
