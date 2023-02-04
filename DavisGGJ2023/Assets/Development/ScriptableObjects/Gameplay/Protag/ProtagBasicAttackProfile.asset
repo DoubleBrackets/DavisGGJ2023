@@ -16,7 +16,7 @@ MonoBehaviour:
   verticalKnockbackVelocity: 0
   knockbackStaggerDuration: 0.25
   damage: 0
-  width: 3.8
+  width: 4
   height: 1.22
   depth: 0.5
   attackFromEdge: 1

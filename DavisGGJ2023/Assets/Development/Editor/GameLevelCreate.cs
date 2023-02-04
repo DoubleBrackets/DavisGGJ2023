@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameLevelCreate 
 {
-    static readonly string resourcePath = "Assets/General/Scenes/TemplateLevel.unity";
+    static readonly string resourcePath = "Assets/GeneralAssets/Scenes/TemplateLevel.unity";
     
     [MenuItem("Assets/Create/Gameplay/New Gameplay Level")]
     public static void CreateGameplayLevel()

@@ -3959,27 +3959,6 @@ Transform:
   m_Father: {fileID: 2144668205}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1086971148 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3749249567574938380, guid: e4c38c4e9a88fbf419ad02684cda87f6, type: 3}
-  m_PrefabInstance: {fileID: 3749249567461868796}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1086971150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086971148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbce1ed2d0cdaf34e80a7706ddb1b740, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  askStopFollowingTarget: {fileID: 11400000, guid: 17289f9e3db537a47b7ee714d584070d, type: 2}
-  askStartFollowingTransform: {fileID: 11400000, guid: 1282d8e51b46f4e4c88729959b754893, type: 2}
-  lockOnTarget: {fileID: 11400000, guid: 0bb4d449ca1db304d8d3a60414944150, type: 2}
-  followingCamera: {fileID: 1214740403}
 --- !u!1001 &1117594515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4104,17 +4083,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6075975974975622417, guid: 78e9efbdf9b33994da8dfbe530f65e5e, type: 3}
   m_PrefabInstance: {fileID: 1117594515}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1214740403 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3749249567533778421, guid: e4c38c4e9a88fbf419ad02684cda87f6, type: 3}
-  m_PrefabInstance: {fileID: 3749249567461868796}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1317128879
 GameObject:
   m_ObjectHideFlags: 0
@@ -9912,18 +9880,6 @@ PrefabInstance:
     - target: {fileID: 3749249567574938381, guid: e4c38c4e9a88fbf419ad02684cda87f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3749249568256054000, guid: e4c38c4e9a88fbf419ad02684cda87f6, type: 3}
-      propertyPath: m_AssetsPPU
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3749249568256054004, guid: e4c38c4e9a88fbf419ad02684cda87f6, type: 3}
-      propertyPath: orthographic size
-      value: 8.4375
-      objectReference: {fileID: 0}
-    - target: {fileID: 3749249568457150454, guid: e4c38c4e9a88fbf419ad02684cda87f6, type: 3}
-      propertyPath: pixelsPerUnit
-      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
