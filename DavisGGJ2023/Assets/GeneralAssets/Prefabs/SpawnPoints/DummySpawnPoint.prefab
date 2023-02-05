@@ -47,3 +47,5 @@ MonoBehaviour:
   askSpawnAllEntities: {fileID: 11400000, guid: 6603be6bec09d5143a3c2cb1a4b997a2, type: 2}
   askClearAllEntities: {fileID: 11400000, guid: 6c8c7a00932d62845b89209c5ea21088, type: 2}
   entityPrefab: {fileID: 2593344243470912961, guid: 20ea548e87e1bb94a97081b2a2a2b40d, type: 3}
+  isRequiredEnemy: 0
+  respawnAfterCleared: 0

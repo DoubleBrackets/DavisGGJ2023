@@ -5,11 +5,13 @@ using UnityEngine;
 public class EntitySpawnPoint : MonoBehaviour
 {
     [ColorHeader("Listening", ColorHeaderColor.ListeningChannels)]
-    [SerializeField] private VoidEventChannelSO askSpawnAllEntities;
+    [SerializeField] private BoolEventChannelSO askSpawnAllEntities;
     [SerializeField] private VoidEventChannelSO askClearAllEntities;
     
     [ColorHeader("Config", ColorHeaderColor.Config)]
     [SerializeField] private GameObject entityPrefab;
+    [SerializeField] private bool isRequiredEnemy;
+    [SerializeField] private bool respawnAfterCleared;
 
     private GameObject instance;
 
@@ -27,9 +29,16 @@ public class EntitySpawnPoint : MonoBehaviour
     }
 
     // TODO: Pooling?
-    public void SpawnEntity()
+    public void SpawnEntity(bool levelCleared)
     {
+        if (levelCleared && !respawnAfterCleared) return;
+        
         instance = Instantiate(entityPrefab, transform);
+        var enemy = instance.GetComponentInChildren<Enemy>();
+        if (enemy)
+        {
+            enemy.isRequiredEnemy = isRequiredEnemy;
+        }
         var heightBody = instance.GetComponentInChildren<HeightBody2D>();
         if (heightBody)
         {

@@ -18,6 +18,7 @@ public class SimpleLineDisplay : MonoBehaviour
 
     [ColorHeader("Dependencies")]
     [SerializeField] private TMP_Text lineText;
+    [SerializeField] private CanvasGroup showGroup;
 
     [SerializeField] private TMP_Text speakingCharacterText;
     [SerializeField] private TextAnimatorPlayer typeWriterPlayer;
@@ -30,26 +31,27 @@ public class SimpleLineDisplay : MonoBehaviour
     {
         onRunDialogueLine.OnRaised += DisplayNewLine;
         onUserRequestViewAdvancement.OnRaised += AdvanceView;
-        onDialogueComplete.OnRaised += ClearLine;
+        onDialogueComplete.OnRaised += DialogueDone;
     }
 
     private void OnDisable()
     {
         onRunDialogueLine.OnRaised -= DisplayNewLine;
         onUserRequestViewAdvancement.OnRaised -= AdvanceView;
-        onDialogueComplete.OnRaised += ClearLine;
+        onDialogueComplete.OnRaised -= DialogueDone;
     }
 
-    private void ClearLine()
+    private void DialogueDone()
     {
         lineText.text = "";
         speakingCharacterText.text = "";
+        showGroup.alpha = 0f;
     }
 
     private void DisplayNewLine(LocalizedLine line, Action onDialogueLineFinished)
     {
         string text = line.TextWithoutCharacterName.Text;
-        ClearLine();
+        DialogueDone();
         lineText.text = text;
         speakingCharacterText.text = line.CharacterName;
 
@@ -58,6 +60,7 @@ public class SimpleLineDisplay : MonoBehaviour
         isTypwriterInProgress = true;
         isWaitingForContinue = true;
         typeWriterPlayer.onTextShowed.AddListener(TypeWriterFinished);
+        showGroup.alpha = 1f;
     }
 
     private void TypeWriterFinished()

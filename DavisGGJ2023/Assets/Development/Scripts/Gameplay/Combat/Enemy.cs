@@ -4,16 +4,23 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameStateSO gameState;
+    public bool isRequiredEnemy;
 
+    private bool wasRequiredEnemy = false;
 
-    private void Awake()
+    private void Start()
     {
-        gameState.CurrentEnemyCount++;
+        if (isRequiredEnemy)
+        {
+            wasRequiredEnemy = true;
+            gameState.CurrentEnemyCount++;
+        }
     }
     
     private void OnDestroy()
     {
-        gameState.CurrentEnemyCount--;
+        if(wasRequiredEnemy)
+            gameState.CurrentEnemyCount--;
     }
     
 }

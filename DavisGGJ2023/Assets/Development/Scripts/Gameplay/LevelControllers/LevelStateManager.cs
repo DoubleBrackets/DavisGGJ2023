@@ -14,7 +14,7 @@ public class LevelStateManager : MonoBehaviour
     [SerializeField] private TransitionOutFuncChannelSO askGetTransitionOut;
     [SerializeField] private TransitionInFuncChannelSO askGetTransitionIn;
     [SerializeField] private InputModeEventChannelSO askChangeInputMode;
-    [SerializeField] private VoidEventChannelSO askSpawnAllEntities;
+    [SerializeField] private BoolEventChannelSO askSpawnAllEntities;
     [SerializeField] private LevelEntranceEventChannelSO askSpawnPlayer;
     [SerializeField] private VoidEventChannelSO askClearAllEntities;
     [SerializeField] private VoidEventChannelSO askDiposeAllVFX;
@@ -106,7 +106,6 @@ public class LevelStateManager : MonoBehaviour
     {
         askSpawnPlayer.RaiseEvent(gameState.TargetEntrance);
         
-        if(!gameState.IsCurrentLevelCleared())
-            askSpawnAllEntities.RaiseEvent();
+        askSpawnAllEntities.RaiseEvent(gameState.IsCurrentLevelCleared());
     }
 }
