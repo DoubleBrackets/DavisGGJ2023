@@ -34,7 +34,7 @@ public class ProtagPunchAttack : ProtagState
         attackRotation = mouseVec.GetAngle();
         
         animator.SetFacing(mouseVec);
-        animator.PlayAnimation("Idle");
+        animator.PlayAnimation("Attack");
         heightBody.gravityEnabled = false;
         attacked = false;
         vfxPlayed = false;

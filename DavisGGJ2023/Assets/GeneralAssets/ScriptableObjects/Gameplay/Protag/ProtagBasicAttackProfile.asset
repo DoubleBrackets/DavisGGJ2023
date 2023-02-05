@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb1a0808e7ae7f40b75ca4a1c3c2490, type: 3}
   m_Name: ProtagBasicAttackProfile
   m_EditorClassIdentifier: 
-  knockbackVelocity: 24
+  knockbackVelocity: 25
   verticalKnockbackVelocity: 0
-  knockbackStaggerDuration: 0.18
+  knockbackStaggerDuration: 0.17
   damage: 0
-  width: 4
+  width: 2.5
   height: 1.22
   depth: 1
   attackFromEdge: 1
@@ -24,9 +24,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 18560
   pierce: 1
-  playVFXTime: 0.15
-  windupDuration: 0.25
-  followThroughDuration: 0.25
+  playVFXTime: 0.44
+  windupDuration: 0.54
+  followThroughDuration: 0.2
   cooldown: 0.5
   freezeFrameDuration: 0.2
   tag: 0
