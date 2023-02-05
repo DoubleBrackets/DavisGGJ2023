@@ -16,9 +16,3 @@ public class CombatEntity : MonoBehaviour, Attackable
     }
 }
 
-public struct AttackInfo
-{
-    public GameObject ignoreSource;
-    public Vector3 attackSourcePosition;
-    public Quaternion attackAngle;
-}

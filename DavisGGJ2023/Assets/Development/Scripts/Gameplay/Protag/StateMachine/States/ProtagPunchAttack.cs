@@ -39,14 +39,14 @@ public class ProtagPunchAttack : ProtagState
         attacked = false;
         vfxPlayed = false;
         
-        transitions.SubOnHitDoDie();
+        transitions.SubOnHitDoStaggered();
     }
 
     public override void ExitState()
     {
         heightBody.gravityEnabled = true;
         blackboard.basicAttackFinishTime = Time.time;
-        transitions.UnsubOnHitDoDie();
+        transitions.UnsubOnHitDoStaggered();
     }
 
     public override void UpdateState()
@@ -60,7 +60,8 @@ public class ProtagPunchAttack : ProtagState
                 attackProfile,
                 new AttackInfo
                 {
-                    attackSourcePosition = attackPos,
+                    ignoreSource = blackboard.protagCombatEntity.gameObject,
+                    attackSourcePositionRaw = attackPos,
                     attackAngle =  attackRotation,
                 }
             );

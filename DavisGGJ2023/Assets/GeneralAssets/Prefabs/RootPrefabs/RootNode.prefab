@@ -235,9 +235,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sendingAttacksTo:
   - {fileID: 0}
-  attackVFX: {fileID: 11400000, guid: 008602e7493325c4aa9504dfedc8987e, type: 2}
+  attackSendDelay: 0
+  rootAttackProfile: {fileID: 11400000, guid: 0f6158eb6b7a4604aae86f3775689adc, type: 2}
+  attackReceiveDelay: 0
   attackSource: {fileID: 313159657}
-  attackDelay: 0
+  attackVFX: {fileID: 11400000, guid: 008602e7493325c4aa9504dfedc8987e, type: 2}
+  knockbackRatio: 1
   askPlayVFX: {fileID: 11400000, guid: 51f84772f74fa744bb1b47695f9b3b35, type: 2}
   askPerformAttack: {fileID: 11400000, guid: 84d405ec6f3b1c840bef7b31f047599d, type: 2}
   warpingTo: {fileID: 0}

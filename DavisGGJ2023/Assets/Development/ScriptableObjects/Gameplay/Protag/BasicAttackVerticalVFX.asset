@@ -10,7 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21f2043f24e61a94386a11885fd64222, type: 3}
-  m_Name: BasicAttackVFX
+  m_Name: BasicAttackVerticalVFX
   m_EditorClassIdentifier: 
-  vfx: {fileID: 2778542598330198356, guid: b19c0c5a5433c594c9591777cbc62a51, type: 3}
-  vfxInstanceID: ProtagBasicAttack
+  vfx: {fileID: 2778542598330198356, guid: c768efc0e4d2c70439480d5cd05b1f5f, type: 3}

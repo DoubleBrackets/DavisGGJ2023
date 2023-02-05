@@ -14,12 +14,12 @@ public class ProtagFalling : ProtagState
 
     public override void EnterState()
     {
-        transitions.SubOnHitDoDie();
+        transitions.SubOnHitDoStaggered();
     }
 
     public override void ExitState()
     {
-        transitions.UnsubOnHitDoDie();
+        transitions.UnsubOnHitDoStaggered();
         blackboard.askSetDamping.RaiseEvent(1f);
     }
 

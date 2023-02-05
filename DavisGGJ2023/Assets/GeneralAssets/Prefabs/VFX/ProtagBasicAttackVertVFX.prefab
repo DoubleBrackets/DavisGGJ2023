@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7282355717342828452}
   - component: {fileID: 7282355717342828451}
   m_Layer: 0
-  m_Name: ProtagBasicAttackVFX
+  m_Name: ProtagBasicAttackVertVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2778542598330198356
 MonoBehaviour:
@@ -683,8 +683,8 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0.59, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: -90}
+    m_Position: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -1564,8 +1564,8 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
-      minScalar: 50
+      scalar: -4
+      minScalar: 4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1617,8 +1617,8 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 3
-      scalar: -4
-      minScalar: 4
+      scalar: 15
+      minScalar: 50
       maxCurve:
         serializedVersion: 2
         m_Curve:

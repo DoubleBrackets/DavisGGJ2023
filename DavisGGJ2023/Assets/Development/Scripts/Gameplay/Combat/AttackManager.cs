@@ -2,6 +2,15 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class AttackInfo
+{
+    public GameObject ignoreSource;
+    public Vector3 attackSourcePositionRaw;
+    public Quaternion attackAngle;
+    public float knockbackRatio = 1;
+}
+
+
 public class AttackManager : MonoBehaviour
 {
     [ColorHeader("Listening", ColorHeaderColor.ListeningChannels)]
@@ -31,7 +40,7 @@ public class AttackManager : MonoBehaviour
 
     private bool PerformAttack(AttackProfileSO attackProfile, AttackInfo attackInfo)
     {
-        Vector3 castPos = attackInfo.attackSourcePosition;
+        Vector3 castPos = attackInfo.attackSourcePositionRaw;
         
         if (attackProfile.AttackFromEdge)
         {

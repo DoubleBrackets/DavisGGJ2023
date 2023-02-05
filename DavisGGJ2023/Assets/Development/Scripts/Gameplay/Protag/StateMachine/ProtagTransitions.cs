@@ -55,14 +55,15 @@ public class ProtagTransitions : TransitionTable<ProtagBlackboard>
     {
         SubOnDashTryWarp();
         SubOnPrimaryDoBasicAttack();
-        SubOnHitDoDie();
+        SubOnHitDoStaggered();
+        SubOnHazardDoDie();
     }
     
     public void UnsubBasicActions()
     {
         UnsubOnDashTryWarp();
         UnsubOnPrimaryDoBasicAttack();
-        UnsubOnHitDoDie();
+        UnsubOnHitDoStaggered();
     }
 
     public void SubOnPrimaryDoBasicAttack()
@@ -95,7 +96,7 @@ public class ProtagTransitions : TransitionTable<ProtagBlackboard>
             blackboard.tryRootWarpAttackProfile,
             new AttackInfo
             {
-                attackSourcePosition = blackboard.playerBodyTransform.position + Vector3.up
+                attackSourcePositionRaw = blackboard.playerBodyTransform.position + Vector3.up
             }
         );
     }
@@ -114,27 +115,45 @@ public class ProtagTransitions : TransitionTable<ProtagBlackboard>
     }
     #endregion
     
-    #region Death
-    public void SubOnHitDoDie()
+    #region Combat Hits
+    public void SubOnHitDoStaggered()
     {
-        blackboard.protagCombatEntity.onAttackReceived += TryToDie;
-        blackboard.heightBody.onHitHazard += TryToDie;
+        blackboard.protagCombatEntity.onAttackReceived += GetHit;
     }
-    private bool TryToDie(AttackProfileSO attackProfileSo, AttackInfo attackInfo)
+    private bool GetHit(AttackProfileSO attackProfileSo, AttackInfo attackInfo)
     {
-        TryToDie();
+        if (attackProfileSo.Damage != 0)
+        {
+            HazardHit();
+        }
+        else
+        {
+            blackboard.recentlyHit = attackProfileSo;
+            blackboard.recentlyHitInfo = attackInfo;
+            context.ForceTransition(GetState<ProtagStaggered>());
+        }
         return true;
     }
-
-    private void TryToDie()
+    
+    public void UnsubOnHitDoStaggered()
+    {
+        blackboard.protagCombatEntity.onAttackReceived -= GetHit;
+    }
+    
+    public void SubOnHazardDoDie()
+    {
+        blackboard.heightBody.onHitHazard += HazardHit;
+    }
+    
+    private void HazardHit()
     {
         context.ForceTransition(GetState<ProtagDead>());
     }
     
-    public void UnsubOnHitDoDie()
+
+    public void UnsubOnHazardDoDie()
     {
-        blackboard.protagCombatEntity.onAttackReceived -= TryToDie;
-        blackboard.heightBody.onHitHazard -= TryToDie;
+        blackboard.heightBody.onHitHazard -= HazardHit;
     }
     #endregion
 }

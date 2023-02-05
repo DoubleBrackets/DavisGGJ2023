@@ -48,7 +48,9 @@ public class ProtagBlackboard : DescriptionMonoBehavior
     [ReadOnly] public float basicAttackFinishTime;
     [ReadOnly] public float warpTravelTime;
     [ReadOnly] public Vector3 warpTarget;
-    
+
+    [ReadOnly] public AttackProfileSO recentlyHit;
+    [ReadOnly] public AttackInfo recentlyHitInfo;
 
     public void UpdateInput()
     {

@@ -8,10 +8,15 @@ public class MagicRoot : MonoBehaviour
     [ColorHeader("Sending Attacks To")]
     [SerializeField] private MagicRoot[] sendingAttacksTo;
 
-    [ColorHeader("Attack Config", ColorHeaderColor.Config)]
-    [SerializeField] private VFXEffectProfile attackVFX;
+    [ColorHeader("Attack Config - Sending", ColorHeaderColor.Config)]
+    [SerializeField] private float attackSendDelay;
+    
+    [ColorHeader("Attack Config - Receiving", ColorHeaderColor.Config)]
+    [SerializeField] private AttackProfileSO rootAttackProfile;
+    [SerializeField] private float attackReceiveDelay;
     [SerializeField] private Transform attackSource;
-    [SerializeField] private float attackDelay;
+    [SerializeField] private VFXEffectProfile attackVFX;
+    [SerializeField] private float knockbackRatio;
 
     [ColorHeader("Invoking", ColorHeaderColor.InvokingChannels)]
     [SerializeField] private PlayVFXFuncChannelSO askPlayVFX;
@@ -45,15 +50,17 @@ public class MagicRoot : MonoBehaviour
         // Check whether this attack is a basic attack or a teleport attempt
         if (attackProfile.Tag == 0)
         {
+            bool attackSent = false;
             // Its an attack - propogate the attack 
             foreach (var root in sendingAttacksTo)
             {
                 if (root)
                 {
-                    root.PerformRootAttack(attackProfile, attackInfo, attackDelay);
+                    attackSent = true;
+                    root.PerformRootAttack(attackInfo, attackSendDelay);
                 }
             }
-            if(sendingAttacksTo.Length > 0)
+            if(attackSent)
                 return true;
         }
         else if (attackProfile.Tag == 1 && warpingTo != null)
@@ -98,14 +105,14 @@ public class MagicRoot : MonoBehaviour
         );
     }
 
-    private void PerformRootAttack(AttackProfileSO attackProfile, AttackInfo attackInfo, float delay)
+    private void PerformRootAttack(AttackInfo attackInfo, float delay)
     {
-        StartCoroutine(CoroutRootAttack(attackProfile, attackInfo, delay));
+        StartCoroutine(CoroutRootAttack(rootAttackProfile, attackInfo, delay));
     }
 
     private IEnumerator CoroutRootAttack(AttackProfileSO attackProfile, AttackInfo attackInfo, float delay)
     {
-        yield return new WaitForSeconds(attackProfile.PlayVFXTime + delay);
+        yield return new WaitForSeconds(attackProfile.PlayVFXTime + delay + attackReceiveDelay);
                 
         var rotation = attackSource.rotation;
         var position = attackSource.position;
@@ -121,14 +128,15 @@ public class MagicRoot : MonoBehaviour
         );
 
         yield return new WaitForSeconds(attackProfile.WindupDuration - attackProfile.PlayVFXTime);
-        
+
         askPerformAttack.CallFunc(
             attackProfile,
             new AttackInfo
             {
                 ignoreSource = rootHitboxTarget.gameObject,
-                attackSourcePosition = position,
+                attackSourcePositionRaw = position,
                 attackAngle = rotation,
+                knockbackRatio = knockbackRatio
             }
         );
 
@@ -142,7 +150,7 @@ public class MagicRoot : MonoBehaviour
         Vector3 pos = transform.position;
         if (warpingTo)
         {
-            Gizmos.DrawLine(pos, warpingTo.transform.position);
+            Gizmos.DrawLine(pos + Vector3.down * 0.1f, warpingTo.transform.position + Vector3.down * 0.1f);
             Gizmos.DrawWireSphere(Vector3.Lerp(pos, warpingTo.transform.position, 0.75f), 0.25f);
         }
 

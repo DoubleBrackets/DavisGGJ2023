@@ -40,10 +40,9 @@ public class TargetDummyController : MonoBehaviour
         if (currentState == TargetDummyState.Staggered) return false;
         
         heightBody.horizontalVel = 
-            attack.attackAngle * Vector2.right
-            * attackProfile.KnockbackVelocity;
+            attack.attackAngle * Vector2.right * (attackProfile.KnockbackVelocity * attack.knockbackRatio);
 
-        heightBody.verticalVelocity = attackProfile.VerticalKnockbackVelocity;
+        heightBody.verticalVelocity = attackProfile.VerticalKnockbackVelocity * attack.knockbackRatio;
 
         // Do not invoke if stagger is being extended
         if (staggerDuration <= 0f && attackProfile.KnockbackStaggerDuration > 0f)
