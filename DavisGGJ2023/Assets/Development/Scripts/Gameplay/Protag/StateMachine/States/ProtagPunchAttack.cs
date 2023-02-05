@@ -54,7 +54,7 @@ public class ProtagPunchAttack : ProtagState
         if (!attacked && stateDuration > BasicAttackProfile.WindupDuration)
         {
             var attackProfile = blackboard.basicAttackProfile;
-            
+            attackPos = playerBody.position + Vector3.up;
             // Attack physics
             bool succeess = blackboard.askPerformAttack.CallFunc(
                 attackProfile,
@@ -73,6 +73,7 @@ public class ProtagPunchAttack : ProtagState
 
         if (!vfxPlayed && stateDuration > BasicAttackProfile.PlayVFXTime)
         {
+            attackPos = playerBody.position + Vector3.up;
             vfxPlayed = true;
             blackboard.askPlayVFX.CallFunc(
                 blackboard.basicAttackVFX,
