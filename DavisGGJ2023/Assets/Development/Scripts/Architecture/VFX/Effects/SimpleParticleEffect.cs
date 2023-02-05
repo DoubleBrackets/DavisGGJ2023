@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SimpleParticleEffect : VFXEffect
 {
-    [SerializeField] private ParticleSystem particles;
+    [SerializeField] private ParticleSystem[] particles;
     [SerializeField] private float duration;
 
     private PlayVFXSettings settings;
@@ -15,7 +15,11 @@ public class SimpleParticleEffect : VFXEffect
         this.settings = settings;
         transform.position = settings.position;
         transform.rotation = settings.rotation;
-        particles.Play();
+        foreach (var particle in particles)
+        {
+            particle.Play();
+        }
+
         settings.stopEvent += StopEffect;
         startTime = Time.time;
     }
