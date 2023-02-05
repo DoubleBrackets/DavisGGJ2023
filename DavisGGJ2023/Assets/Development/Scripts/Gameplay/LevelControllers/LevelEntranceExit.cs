@@ -20,6 +20,7 @@ public class LevelEntranceExit : MonoBehaviour
     [SerializeField] private GameStateSO gameState;
 
     [ColorHeader("Config")]
+    [SerializeField] private bool spawnPoint;
     [SerializeField] private GameObject protagPrefab;
     [SerializeField] private LayerMask playerMask;
     [SerializeField] private string dialogueNodeWhenLeaveWithoutClearing;
@@ -62,7 +63,7 @@ public class LevelEntranceExit : MonoBehaviour
     
     public void SpawnPlayer(LevelEntranceSO levelEntranceSo)
     {
-        if (levelEntranceSo != entrance) return;
+        if (!spawnPoint && (entrance == null || levelEntranceSo != entrance)) return;
 
         spawned = false;
         instance = Instantiate(protagPrefab, transform);

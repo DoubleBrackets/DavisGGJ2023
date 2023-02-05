@@ -13,6 +13,7 @@ public class DialogueDebugRunner : MonoBehaviour
     private void OnEnable()
     {
         nodeNameInputField.onSubmit.AddListener(RunDialogue);
+        gameObject.SetActive(true);
     }
 
     private void OnDisable()

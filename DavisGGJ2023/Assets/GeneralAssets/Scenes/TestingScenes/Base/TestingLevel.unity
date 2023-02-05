@@ -11128,6 +11128,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1159743369, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
+      propertyPath: spawnPoint
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8940716640837822157, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
       propertyPath: m_Name
       value: PlayerSpawnPoint
