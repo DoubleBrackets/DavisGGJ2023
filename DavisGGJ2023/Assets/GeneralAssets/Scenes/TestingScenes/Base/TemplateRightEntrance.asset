@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80c01a3221a448a40a94b7aa4d59d819, type: 3}
-  m_Name: TemplateLeftEntrance
+  m_Name: TemplateRightEntrance
   m_EditorClassIdentifier: 
   description: 
-  levelToEnter: {fileID: 11400000, guid: 8c309e728a594374a94cf2263d512875, type: 2}
+  levelToEnter: {fileID: 11400000, guid: 5e573ed980a0da5428f04ca45f6ff90b, type: 2}

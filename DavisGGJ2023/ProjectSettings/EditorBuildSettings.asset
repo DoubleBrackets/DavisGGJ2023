@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GeneralAssets/Scenes/KeyScenes/PersistentManagers.unity
     guid: fc0384c51e351b846ba7b53a6bcb737a
-  - enabled: 1
+  - enabled: 0
     path: Assets/GeneralAssets/Scenes/DialogueScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
@@ -21,9 +21,12 @@ EditorBuildSettings:
     path: Assets/GeneralAssets/Scenes/KeyScenes/MainMenu.unity
     guid: bb893ff38b5802a4b9f2454a90719143
   - enabled: 1
-    path: Assets/GeneralAssets/Scenes/TestScene/Second/TemplateTravelTest2.unity
+    path: Assets/GeneralAssets/Scenes/TestingScenes/Second/TemplateTravelTest2.unity
     guid: 4789fe433eea32f4397be5ea58ba637e
   - enabled: 1
-    path: Assets/GeneralAssets/Scenes/TestScene/First/TemplateTravelTest.unity
+    path: Assets/GeneralAssets/Scenes/TestingScenes/First/TemplateTravelTest.unity
     guid: ffbedbc13e0d72841907c7ddc5dff438
+  - enabled: 1
+    path: Assets/GeneralAssets/Scenes/TestingScenes/Base/TestingLevel.unity
+    guid: 9fb093024026f80428385bf774b8245b
   m_configObjects: {}
