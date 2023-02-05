@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GeneralAssets/Scenes/TestScene/First/TemplateTravelTest.unity
     guid: ffbedbc13e0d72841907c7ddc5dff438
+  - enabled: 1
+    path: Assets/GeneralAssets/Scenes/Levels/TemplateLevel 1.unity
+    guid: d6fe2069d2ded4811ac82bed0cdddcce
   m_configObjects: {}
