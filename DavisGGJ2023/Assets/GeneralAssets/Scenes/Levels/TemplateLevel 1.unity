@@ -5248,7 +5248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5779910724442713954, guid: 7cdd51a0ab84a4f918697a2c904231c3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5779910724442713954, guid: 7cdd51a0ab84a4f918697a2c904231c3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16548,12 +16548,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5779910724442713955, guid: 7cdd51a0ab84a4f918697a2c904231c3, type: 3}
+      propertyPath: angle
+      value: 0.9272952
+      objectReference: {fileID: 0}
+    - target: {fileID: 5779910724442713955, guid: 7cdd51a0ab84a4f918697a2c904231c3, type: 3}
       propertyPath: lowerY
-      value: 5.004649
+      value: 10.962904
       objectReference: {fileID: 0}
     - target: {fileID: 5779910724442713955, guid: 7cdd51a0ab84a4f918697a2c904231c3, type: 3}
       propertyPath: upperY
-      value: 7.004649
+      value: 12.462904
+      objectReference: {fileID: 0}
+    - target: {fileID: 5779910724442713955, guid: 7cdd51a0ab84a4f918697a2c904231c3, type: 3}
+      propertyPath: stairLength
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -16633,6 +16641,10 @@ PrefabInstance:
     - target: {fileID: 8940716640837822157, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
       propertyPath: m_Name
       value: PlayerLeftEntrance
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940716640837822157, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8940716640837822159, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
       propertyPath: m_RootOrder
@@ -17055,6 +17067,10 @@ PrefabInstance:
     - target: {fileID: 8940716640837822157, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
       propertyPath: m_Name
       value: RightEntrance
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940716640837822157, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8940716640837822159, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
       propertyPath: m_RootOrder
