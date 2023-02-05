@@ -63,7 +63,9 @@ public class LevelEntranceExit : MonoBehaviour
     
     public void SpawnPlayer(LevelEntranceSO levelEntranceSo)
     {
-        if (!spawnPoint && (entrance == null || levelEntranceSo != entrance)) return;
+        bool isValid = (spawnPoint && levelEntranceSo == null) ||
+                       levelEntranceSo == entrance;
+        if (!isValid) return;
 
         spawned = false;
         instance = Instantiate(protagPrefab, transform);
