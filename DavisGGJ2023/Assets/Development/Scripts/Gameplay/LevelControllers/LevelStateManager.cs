@@ -74,7 +74,6 @@ public class LevelStateManager : MonoBehaviour
     {
         LoadLevel();
         yield return new WaitForSeconds(0.5f);
-        askChangeInputMode.RaiseEvent(InputMode.Gameplay);
         currentOperation = null;
     }
 
@@ -94,7 +93,6 @@ public class LevelStateManager : MonoBehaviour
         LoadLevel();
         
         yield return askGetTransitionIn.CallFunc(TransitionEffect.FadeBlack, false);
-        askChangeInputMode.RaiseEvent(InputMode.Gameplay);
         currentOperation = null;
     }
 

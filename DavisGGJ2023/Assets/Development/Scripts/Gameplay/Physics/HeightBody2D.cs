@@ -30,7 +30,7 @@ public class HeightBody2D : MonoBehaviour
     public Transform ShadowTransform => shadowTransform;
     
     [ColorHeader("Physics State")]
-    public Vector2 horizontalCoords;
+    public Vector2 horizontalPos;
     public Vector2 horizontalVel;
     
     public float height;
@@ -38,17 +38,19 @@ public class HeightBody2D : MonoBehaviour
     public float gravityAccel = 13;
     public float terminalVelocity = 15;
     public bool gravityEnabled = true;
+    public bool horizontalCollideEnabled = true;
 
     public bool isGrounded;
     private float xTilt;
-    private float nearestGroundIfNotGrounded;
+    private float nearestGroundIfNotGrounded = -1;
 
     private Vector2 expectedWallHorizontalPos;
 
-    public Vector2 TransformPosition => targetTransform.position;
+    public Vector3 TransformPosition => targetTransform.position;
     
     // Events
     public event Action<Vector2, Vector2> onHorizontalCollide;
+    public event Action onHitGround;
     public event Action onHitHazard;
     
     private void OnEnable()
@@ -56,9 +58,15 @@ public class HeightBody2D : MonoBehaviour
         hasShadow = shadowTransform != null;
     }
 
+    public void ForceUpdate()
+    {
+        FixedUpdate();
+        RecalculatePosition(true);
+    }
+
     private void FixedUpdate()
     {
-        Vector2 startHorizontalCoords = horizontalCoords;
+        Vector2 startHorizontalCoords = horizontalPos;
         ApplyForces();
 
         bool wasGrounded = isGrounded;
@@ -69,11 +77,14 @@ public class HeightBody2D : MonoBehaviour
         {
             horizontalVel = horizontalVel.normalized * Mathf.Max(horizontalVel.magnitude, 3f);
         }
+        else if (isGrounded && !wasGrounded)
+        {
+            onHitGround?.Invoke();
+        }
         
         Vector2 horizontalStep = horizontalVel  * Time.fixedDeltaTime;
         horizontalStep.y *= Mathf.Cos(xTilt);
-        // To prevent weird collisions when dropping down
-        //if (isGrounded)
+        if (horizontalCollideEnabled)
         {
             Vector2 startStep = horizontalStep;
             Vector2 startVel = horizontalVel;
@@ -165,7 +176,7 @@ public class HeightBody2D : MonoBehaviour
 
             // If the character is moving away from the collider on the horizontal axis, then ignore
             // This prevents collisions when dropping down height through a wall collider
-            Vector2 horizontalNormal = horizontalCoords - horizontalHitPosition;
+            Vector2 horizontalNormal = horizontalPos - horizontalHitPosition;
             float directionDot = Vector2.Dot(horizontalNormal, step);
 
             bool fallingCollision = isGrounded || directionDot < 0f;
@@ -189,11 +200,11 @@ public class HeightBody2D : MonoBehaviour
 
             float hitDist = closest.distance - skinWidth;
             
-            Vector2 target = horizontalCoords + step;
+            Vector2 target = horizontalPos + step;
             // Snap to the collision surface
-            horizontalCoords += dir * hitDist;
+            horizontalPos += dir * hitDist;
             
-            step = target - horizontalCoords;
+            step = target - horizontalPos;
             
             // "Slide" up the surface
             step = step.ProjectOntoNormal(closest.normal.normalized);
@@ -216,37 +227,49 @@ public class HeightBody2D : MonoBehaviour
     {
         Vector2 testPoint = physicsBox.bounds.center;
         float heightStep = verticalVelocity * Time.fixedDeltaTime;
-        // Check for ground
-        var casts = Physics2D.RaycastAll(
-            testPoint,
-            Vector2.down,
-            0.25f,
-            groundMask | hazardMask);
         
-        isGrounded = false;
-        xTilt = 0f;
-
-        float closest = float.MinValue;
-        nearestGroundIfNotGrounded = -1;
-        
-        foreach (var cast in casts)
+        (float,float) CalculateGroundHeight(Collider2D coll)
         {
-            // Resolve collisions
-            var colliderPos = cast.collider.bounds.center;
+            var colliderPos = coll.bounds.center;
             float groundHeight = colliderPos.z;
 
-            var ramp = cast.collider.GetComponent<VerticalHeightRamp>();
+            var ramp = coll.GetComponent<VerticalHeightRamp>();
             bool isRamp = ramp != null;
             
             float groundXTilt = 0f;
             if (isRamp)
             {
                 groundXTilt = ramp.Angle;
-                groundHeight = ramp.EvaluateHeight(horizontalCoords);
+                groundHeight = ramp.EvaluateHeight(horizontalPos);
             }
+
+            return (groundHeight, groundXTilt);
+        }
+
+        isGrounded = false;
+        xTilt = 0f;
+
+        float closest = float.MinValue;
+        var casts = Physics2D.RaycastAll(
+            testPoint,
+            Vector2.down,
+            2 * heightStep,
+            groundMask | hazardMask);
+        
+        foreach (var cast in casts)
+        {
+            // Resolve collisions
+            var colliderPos = cast.collider.bounds.center;
+            
 
             Vector2 collisionGroundPos = cast.point;
             collisionGroundPos.y -= colliderPos.z;
+
+            var res = CalculateGroundHeight(cast.collider);
+
+            float groundHeight = res.Item1;
+            float groundXTilt = res.Item2;
+            bool isRamp = groundXTilt != 0;
 
             bool isCloser = groundHeight > closest;
             bool isWithinNextVertStep = groundHeight >= height + heightStep;
@@ -254,7 +277,9 @@ public class HeightBody2D : MonoBehaviour
 
             bool fallDownRamp = horizontalVel.y <= -snapToStairsMaxYVel;
             bool snapToRamp = !fallDownRamp && isRamp && groundHeight >= height - 0.2f;
-            
+
+            Vector2 hitHorizontal = cast.point - Vector2.up * groundHeight;
+
             if (isCloser && (snapToRamp || isWithinNextVertStep) && isWithinSnapUpDist)
             {
                 isGrounded = true;
@@ -270,18 +295,44 @@ public class HeightBody2D : MonoBehaviour
                     onHitHazard?.Invoke();
                 }
             }
-            else
+        }
+
+        
+        if (!isGrounded)
+        {
+            // Check further for ground to place shadows correctly
+            float castsPerUnit = 4;
+            nearestGroundIfNotGrounded = -1;
+            float nearestHorizontalDist = float.MaxValue;
+        
+            for (int i = 0; i < maxShadowCastDist * castsPerUnit; i++)
             {
-                nearestGroundIfNotGrounded = groundHeight;
+                var cast = Physics2D.Raycast(
+                    testPoint - Vector2.down * i/castsPerUnit,
+                    Vector2.down,
+                    1/castsPerUnit,
+                    groundMask | hazardMask);
+                if (cast.collider != null)
+                {
+                    var res = CalculateGroundHeight(cast.collider);
+                    Vector2 hitHorizontal = cast.point - Vector2.up * res.Item1;
+
+                    float horizontalDist = (horizontalPos - hitHorizontal).sqrMagnitude;
+                    if(res.Item1 < height && horizontalDist < nearestHorizontalDist)
+                    {
+                        nearestHorizontalDist = horizontalDist;
+                        nearestGroundIfNotGrounded = res.Item1;
+                    }
+                }
             }
         }
     }
 
     private void ApplyVelocity(Vector2 horizontalStep, Vector2 startHorizontalCoords)
     {
-        horizontalCoords += horizontalStep;
+        horizontalPos += horizontalStep;
         
-        Vector2 finalHorizontalStep = horizontalCoords - startHorizontalCoords;
+        Vector2 finalHorizontalStep = horizontalPos - startHorizontalCoords;
 
         if (isGrounded)
         {
@@ -294,33 +345,38 @@ public class HeightBody2D : MonoBehaviour
         }
     }
 
-    private void RecalculatePosition()
+    public void RecalculatePosition(bool forceSnapShadow = false)
     {
         transform.position = new Vector3(
-            horizontalCoords.x,
-            horizontalCoords.y + height,
+            horizontalPos.x,
+            horizontalPos.y + height,
             height);
 
         if (hasShadow)
         {
-            float y = horizontalCoords.y;
+            float y = horizontalPos.y;
             if (isGrounded)
             {
+                shadowTransform.gameObject.SetActive(true);
                 y += height;
             }
             else if(nearestGroundIfNotGrounded != -1)
             {
+                shadowTransform.gameObject.SetActive(true);
                 y += nearestGroundIfNotGrounded;
             }
             else
             {
-                y = -10000f;
+                shadowTransform.gameObject.SetActive(false);
             }
-            float distance = horizontalCoords.y + height - y;
-            shadowTransform.position = new Vector3(
-                horizontalCoords.x,
-                y,
-                height);
+            
+            float distance = horizontalPos.y + height - y;
+
+            shadowTransform.position = Vector3.MoveTowards(
+                shadowTransform.position,
+                new Vector3(horizontalPos.x, y, height),
+                forceSnapShadow ? 1000000 : 50f * Time.fixedDeltaTime
+            );
 
             shadowTransform.localScale = Vector3.one * Mathf.InverseLerp(maxShadowCastDist, 0f, distance);
         }

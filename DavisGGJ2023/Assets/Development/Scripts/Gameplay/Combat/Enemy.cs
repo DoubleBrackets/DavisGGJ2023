@@ -6,12 +6,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameStateSO gameState;
 
 
-    private void OnEnable()
+    private void Awake()
     {
         gameState.CurrentEnemyCount++;
     }
     
-    private void OnDisable()
+    private void OnDestroy()
     {
         gameState.CurrentEnemyCount--;
     }

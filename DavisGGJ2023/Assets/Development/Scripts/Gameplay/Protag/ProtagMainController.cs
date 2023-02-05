@@ -18,6 +18,8 @@ public class ProtagMainController : DescriptionMonoBehavior
         blackboard.InputProvider.Events.OnPausePressed += DebugReset;
         blackboard.askSetDamping.RaiseEvent(0f);
         blackboard.askStartFollowingTarget.RaiseEvent(blackboard.playerBodyTransform);
+
+        blackboard.gameState.ProtagBlackboard = blackboard;
     }
 
     private void Start()
@@ -29,6 +31,7 @@ public class ProtagMainController : DescriptionMonoBehavior
     {
         playerStateMachine.DisableStateMachine();
         blackboard.InputProvider.Events.OnPausePressed -= DebugReset;
+        blackboard.gameState.ProtagBlackboard = null;
     }
 
     private void DebugReset()

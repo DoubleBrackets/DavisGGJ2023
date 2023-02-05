@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96efd6df8f642ae4a8530f4c57548507, type: 3}
   m_Name: PixelPerfectVolumeComponent
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     m_OverrideState: 1
     m_Value: 1

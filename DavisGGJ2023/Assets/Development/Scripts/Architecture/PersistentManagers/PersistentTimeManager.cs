@@ -60,7 +60,7 @@ public class PersistentTimeManager : MonoBehaviour
             timeScale = 0f,
             remainingDuration = duration
         };
-        
+        Time.timeScale = 0f;
         currentTimeModifiers.Add(modifier);
     }
 }

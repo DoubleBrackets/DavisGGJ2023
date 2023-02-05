@@ -5,6 +5,7 @@ public class ProtagBlackboard : DescriptionMonoBehavior
     [ColorHeader("Dependencies")]
     [SerializeField] public ProtagInputProvider InputProvider;
     [SerializeField] public PlayerInputState InputState;
+    [SerializeField] public GameStateSO gameState;
     
     [ColorHeader("Visuals")]
     [SerializeField] public ProtagAnimator animator;
@@ -49,8 +50,8 @@ public class ProtagBlackboard : DescriptionMonoBehavior
     [ReadOnly] public float warpTravelTime;
     [ReadOnly] public Vector3 warpTarget;
 
-    [ReadOnly] public AttackProfileSO recentlyHit;
-    [ReadOnly] public AttackInfo recentlyHitInfo;
+    [ReadOnly] public AttackProfileSO recentAttacked;
+    [ReadOnly] public AttackInfo recentAttackedInfo;
 
     public void UpdateInput()
     {
