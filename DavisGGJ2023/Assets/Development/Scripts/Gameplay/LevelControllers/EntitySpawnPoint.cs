@@ -54,7 +54,7 @@ public class EntitySpawnPoint : MonoBehaviour
         var position = transform.position;
         Handles.Label(
             position  + Vector3.up, 
-            $"{entityPrefab.name}: {position}");
+            $"{entityPrefab.name}: {position - Vector3.up * position.z}");
         
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(position, 0.5f);

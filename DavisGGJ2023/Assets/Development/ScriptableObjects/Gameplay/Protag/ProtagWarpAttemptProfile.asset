@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cb1a0808e7ae7f40b75ca4a1c3c2490, type: 3}
-  m_Name: ProtagBasicAttackProfile
+  m_Name: ProtagWarpAttemptProfile
   m_EditorClassIdentifier: 
-  knockbackVelocity: 24
+  knockbackVelocity: 0
   verticalKnockbackVelocity: 0
-  knockbackStaggerDuration: 0.18
+  knockbackStaggerDuration: 0
   damage: 0
-  width: 4
-  height: 1.22
+  width: 1.5
+  height: 1.5
   depth: 1
-  attackFromEdge: 1
+  attackFromEdge: 0
   hitMask:
     serializedVersion: 2
-    m_Bits: 18432
-  pierce: 1
-  playVFXTime: 0.15
-  windupDuration: 0.25
-  followThroughDuration: 0.25
-  cooldown: 0.5
-  freezeFrameDuration: 0.2
-  tag: 0
+    m_Bits: 16384
+  pierce: 0
+  playVFXTime: 0
+  windupDuration: 0
+  followThroughDuration: 0
+  cooldown: 0.05
+  freezeFrameDuration: 0
+  tag: 1

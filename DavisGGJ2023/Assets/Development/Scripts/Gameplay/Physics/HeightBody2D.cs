@@ -67,7 +67,7 @@ public class HeightBody2D : MonoBehaviour
         // Prevent falling in straight directions to prevent clipping
         if (!isGrounded && wasGrounded)
         {
-            horizontalVel = horizontalVel.normalized * Mathf.Max(horizontalVel.magnitude, 2f);
+            horizontalVel = horizontalVel.normalized * Mathf.Max(horizontalVel.magnitude, 3f);
         }
         
         Vector2 horizontalStep = horizontalVel  * Time.fixedDeltaTime;

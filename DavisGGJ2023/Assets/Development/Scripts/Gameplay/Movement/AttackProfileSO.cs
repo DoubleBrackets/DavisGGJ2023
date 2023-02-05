@@ -31,6 +31,10 @@ public class AttackProfileSO : ScriptableObject
 
     public float PlayVFXTime => playVFXTime;
 
+    public int Tag => tag;
+
+    public bool Pierce => pierce;
+
     [ColorHeader("Stats")]
     [SerializeField] private float knockbackVelocity;
     [SerializeField] private float verticalKnockbackVelocity;
@@ -43,6 +47,7 @@ public class AttackProfileSO : ScriptableObject
     [SerializeField] private float depth;
     [SerializeField] private bool attackFromEdge;
     [SerializeField] private LayerMask hitMask;
+    [SerializeField] private bool pierce;
     
     [ColorHeader("Timing")]
     [SerializeField] private float playVFXTime;
@@ -52,4 +57,5 @@ public class AttackProfileSO : ScriptableObject
 
     [ColorHeader("Effects")]
     [SerializeField] private float freezeFrameDuration;
+    [SerializeField] private int tag;
 }

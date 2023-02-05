@@ -19,7 +19,7 @@ public class RootGameUtilWindow : EditorWindow
     {
         SceneView.duringSceneGui += DuringSceneGUI;
         terrainLayers = LayerMask.GetMask("TerrainWall", "TerrainGround");
-        entityLayers = LayerMask.GetMask("Enemy", "Player", "Destroyable");
+        entityLayers = LayerMask.GetMask("Enemy", "Player", "Destroyable", "Roots");
     }
 
     private void OnDisable()

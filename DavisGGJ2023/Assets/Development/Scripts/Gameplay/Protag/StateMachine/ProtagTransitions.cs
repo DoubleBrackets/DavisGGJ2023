@@ -51,6 +51,20 @@ public class ProtagTransitions : TransitionTable<ProtagBlackboard>
         return false;
     }
 
+    public void SubBasicActions()
+    {
+        SubOnDashTryWarp();
+        SubOnPrimaryDoBasicAttack();
+        SubOnHitDoDie();
+    }
+    
+    public void UnsubBasicActions()
+    {
+        UnsubOnDashTryWarp();
+        UnsubOnPrimaryDoBasicAttack();
+        UnsubOnHitDoDie();
+    }
+
     public void SubOnPrimaryDoBasicAttack()
     {
         blackboard.InputProvider.Events.OnPrimaryFirePressed += TryToBasicAttack;
@@ -67,6 +81,40 @@ public class ProtagTransitions : TransitionTable<ProtagBlackboard>
         blackboard.InputProvider.Events.OnPrimaryFirePressed -= TryToBasicAttack;
     }
     
+    #region Root Warping
+    public void SubOnDashTryWarp()
+    {
+        blackboard.InputProvider.Events.OnDashPressed += TryToStartRootWarp;
+        blackboard.askPerformRootWarp.OnRaised += PerformRootWarp;
+    }
+
+    private void TryToStartRootWarp()
+    {
+        // Attempt the attack
+        bool successful = blackboard.askPerformAttack.CallFunc(
+            blackboard.tryRootWarpAttackProfile,
+            new AttackInfo
+            {
+                attackSourcePosition = blackboard.playerBodyTransform.position + Vector3.up
+            }
+        );
+    }
+
+    private void PerformRootWarp(Vector3 position, float travelTime)
+    {
+        blackboard.warpTarget = position;
+        blackboard.warpTravelTime = travelTime;
+        context.ForceTransition(GetState<ProtagWarping>());
+    }
+    
+    public void UnsubOnDashTryWarp()
+    {
+        blackboard.InputProvider.Events.OnDashPressed -= TryToStartRootWarp;
+        blackboard.askPerformRootWarp.OnRaised -= PerformRootWarp;
+    }
+    #endregion
+    
+    #region Death
     public void SubOnHitDoDie()
     {
         blackboard.protagCombatEntity.onAttackReceived += TryToDie;
@@ -88,4 +136,5 @@ public class ProtagTransitions : TransitionTable<ProtagBlackboard>
         blackboard.protagCombatEntity.onAttackReceived -= TryToDie;
         blackboard.heightBody.onHitHazard -= TryToDie;
     }
+    #endregion
 }

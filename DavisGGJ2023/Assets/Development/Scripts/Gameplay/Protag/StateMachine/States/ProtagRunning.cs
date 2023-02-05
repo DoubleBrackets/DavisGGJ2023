@@ -15,14 +15,12 @@ public class ProtagRunning : ProtagState
 
     public override void EnterState()
     {
-        transitions.SubOnPrimaryDoBasicAttack();
-        transitions.SubOnHitDoDie();
+        transitions.SubBasicActions();
     }
 
     public override void ExitState()
     {
-        transitions.UnsubOnPrimaryDoBasicAttack();
-        transitions.UnsubOnHitDoDie();
+        transitions.UnsubBasicActions();
     }
 
     public override void UpdateState()

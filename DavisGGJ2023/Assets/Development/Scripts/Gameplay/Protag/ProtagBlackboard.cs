@@ -17,6 +17,7 @@ public class ProtagBlackboard : DescriptionMonoBehavior
 
     [ColorHeader("Combat")]
     [SerializeField] public AttackProfileSO basicAttackProfile;
+    [SerializeField] public AttackProfileSO tryRootWarpAttackProfile;
     [SerializeField] public CombatEntity protagCombatEntity;
 
     [ColorHeader("VFX")]
@@ -39,8 +40,14 @@ public class ProtagBlackboard : DescriptionMonoBehavior
     [ColorHeader("Level Control")]
     [SerializeField] public VoidEventChannelSO askRestartLevel;
 
+    [ColorHeader("Listening", ColorHeaderColor.ListeningChannels, true)]
+    [ColorHeader("Combat")]
+    [SerializeField] public RootWarpEventChannelSO askPerformRootWarp;
+
     [ColorHeader("State", showDivider: true)]
     [ReadOnly] public float basicAttackFinishTime;
+    [ReadOnly] public float warpTravelTime;
+    [ReadOnly] public Vector3 warpTarget;
     
 
     public void UpdateInput()

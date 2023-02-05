@@ -498,6 +498,7 @@ MonoBehaviour:
   basicMovementProfile: {fileID: 11400000, guid: 010023a6854f8ee448cee5f58a484935, type: 2}
   playerBodyTransform: {fileID: 8116578794812904866}
   basicAttackProfile: {fileID: 11400000, guid: 0f6158eb6b7a4604aae86f3775689adc, type: 2}
+  tryRootWarpAttackProfile: {fileID: 11400000, guid: 07347dc222b065a41adf918c411c6093, type: 2}
   protagCombatEntity: {fileID: 118241423233851208}
   basicAttackVFX: {fileID: 11400000, guid: 008602e7493325c4aa9504dfedc8987e, type: 2}
   deathVFX: {fileID: 11400000, guid: 793210b00a63fdd4ca22173b43db8c08, type: 2}
@@ -508,7 +509,10 @@ MonoBehaviour:
   askPlayVFX: {fileID: 11400000, guid: 51f84772f74fa744bb1b47695f9b3b35, type: 2}
   askFreezeFrame: {fileID: 11400000, guid: 8f531660faabd364ea7f87e06d7dad6b, type: 2}
   askRestartLevel: {fileID: 11400000, guid: 6b2093bf2dc6d84418525143b4cd31c6, type: 2}
-  time: 0
+  askPerformRootWarp: {fileID: 11400000, guid: 9621ae468a6253a4e9518b2a4aa1db91, type: 2}
+  basicAttackFinishTime: 0
+  warpTravelTime: 0
+  warpTarget: {x: 0, y: 0, z: 0}
 --- !u!114 &652174787
 MonoBehaviour:
   m_ObjectHideFlags: 0

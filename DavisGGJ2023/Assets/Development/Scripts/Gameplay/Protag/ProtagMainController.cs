@@ -33,6 +33,7 @@ public class ProtagMainController : DescriptionMonoBehavior
 
     private void DebugReset()
     {
+        Debug.Log(playerStateMachine.Blackboard);
         blackboard.askRestartLevel.RaiseEvent();
     }
 

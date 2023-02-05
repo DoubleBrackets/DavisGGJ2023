@@ -30,9 +30,17 @@ public class GameStateSO : DescriptionBaseSO
         set => currentEnemyCount = value;
     }
 
+    public int StatuesDestroyed
+    {
+        get => statuesDestroyed;
+        set => statuesDestroyed = value;
+    }
+
     [SerializeField, ReadOnly] private GameLevelSO currentlyLoadedLevel = null;
     [SerializeField, ReadOnly] private LevelEntranceSO targetEntrance;
-    [SerializeField, ReadOnly] private int currentEnemyCount;
+    [SerializeField] private int currentEnemyCount;
+    [SerializeField] private int statuesDestroyed;
+    
     private HashSet<GameLevelSO> clearedRooms = new();
 
     public bool IsCurrentLevelCleared()
@@ -51,6 +59,7 @@ public class GameStateSO : DescriptionBaseSO
         currentlyLoadedLevel = null;
         entryGameLevel = null;
         CurrentEnemyCount = 0;
+        StatuesDestroyed = 0;
         clearedRooms = new();
     }
 }
