@@ -130,13 +130,13 @@ public class ShadowEnemyController : MonoBehaviour
         Vector2 horizontalPos = heightBody.horizontalPos;
         float verticalPos = heightBody.height;
         bool inHeightRange = 
-            verticalPos < protagHeight + aboveDetectionRange && 
-            verticalPos > protagHeight - belowDetectionRange;
+            verticalPos < protagHeight + belowDetectionRange && 
+            verticalPos > protagHeight - aboveDetectionRange;
 
         Vector3 protagPos = (Vector3)protagHorizontalPos + protagHeight * Vector3.forward;
         Vector3 enemyPos = (Vector3)horizontalPos + verticalPos * Vector3.forward;
 
-        if ((protagPos - enemyPos).sqrMagnitude < detectionDistance * detectionDistance)
+        if (inHeightRange && (protagPos - enemyPos).sqrMagnitude < detectionDistance * detectionDistance)
         {
             return true;
         }
