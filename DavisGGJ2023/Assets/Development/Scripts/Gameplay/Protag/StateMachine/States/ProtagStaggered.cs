@@ -9,12 +9,7 @@ public class ProtagStaggered : ProtagState
 
     public override bool TryTransition(ref GenericState<ProtagBlackboard> c)
     {
-        if (transitions.AirborneToFalling(ref c))
-        {
-            return true;
-        }
-
-        if (stateDuration >= blackboard.recentlyHit.KnockbackStaggerDuration)
+        if (stateDuration >= blackboard.recentAttacked.KnockbackStaggerDuration)
         {
             c = GetState<ProtagIdle>();
             return true;
@@ -25,15 +20,32 @@ public class ProtagStaggered : ProtagState
     public override void EnterState()
     {
         transitions.SubOnHazardDoDie();
+        blackboard.protagCombatEntity.onAttackReceived += ChainHit;
+        Knockback();
+    }
+
+    private bool ChainHit(AttackProfileSO attackProfileSo, AttackInfo attackInfo)
+    {
+        blackboard.recentAttackedInfo = attackInfo;
+        blackboard.recentAttacked = attackProfileSo;
+
+        stateEntryTime = Time.time;
+        Knockback();
+        return true;
+    }
+    
+    private void Knockback()
+    {
         // Knockback
-        var attack = blackboard.recentlyHitInfo;
-        var attackProfile = blackboard.recentlyHit;
+        var attack = blackboard.recentAttackedInfo;
+        var attackProfile = blackboard.recentAttacked;
         
         heightBody.horizontalVel = 
             attack.attackAngle * Vector2.right * (attackProfile.KnockbackVelocity * attack.knockbackRatio);
 
         heightBody.verticalVelocity = attackProfile.VerticalKnockbackVelocity * attack.knockbackRatio;
 
+        blackboard.askFreezeFrame.RaiseEvent(0.2f);
     }
 
     public override void ExitState()
@@ -43,13 +55,13 @@ public class ProtagStaggered : ProtagState
         {
             heightBody.horizontalVel *= 0.6f;
         }
-        transitions.UnsubOnHazardDoDie();
+        transitions.UnsubOnHazardDoDie();blackboard.protagCombatEntity.onAttackReceived -= ChainHit;
     }
 
     public override void UpdateState()
     {
         animator.SetFacing(heightBody.horizontalVel);
-        animator.PlayAnimation("Idle");
+        animator.PlayAnimation(heightBody.isGrounded ? "Idle" : "Falling");
     }
 
     public override void FixedUpdateState()

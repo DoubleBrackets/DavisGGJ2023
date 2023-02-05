@@ -28,7 +28,7 @@ public class ProtagWarping : ProtagState
         playerBody.transform.position = blackboard.warpTarget + Vector3.up * blackboard.warpTarget.z;
         
         heightBody.height = blackboard.warpTarget.z;
-        heightBody.horizontalCoords = blackboard.warpTarget;
+        heightBody.horizontalPos = blackboard.warpTarget;
     }
 
     public override void ExitState()

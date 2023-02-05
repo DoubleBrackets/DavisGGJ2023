@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb1a0808e7ae7f40b75ca4a1c3c2490, type: 3}
+  m_Name: ShadowEnemyMeleeAttack
+  m_EditorClassIdentifier: 
+  knockbackVelocity: 0
+  verticalKnockbackVelocity: 0
+  knockbackStaggerDuration: 0
+  damage: 1
+  width: 2
+  height: 2
+  depth: 1.5
+  attackFromEdge: 0
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 128
+  pierce: 1
+  playVFXTime: 0
+  windupDuration: 0
+  followThroughDuration: 0
+  cooldown: 0
+  freezeFrameDuration: 0
+  tag: 0

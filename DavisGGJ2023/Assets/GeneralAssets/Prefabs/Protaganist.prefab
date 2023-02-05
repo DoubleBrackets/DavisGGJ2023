@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769951829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -115,7 +115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799014460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 1.2}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -220,7 +220,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1}
+  m_Offset: {x: 0.0077418983, y: 0.5354841}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -231,7 +231,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7077908, y: 1.5}
+  m_Size: {x: 0.7232746, y: 0.9038712}
   m_EdgeRadius: 0
 --- !u!114 &118241423233851208
 MonoBehaviour:
@@ -310,7 +310,7 @@ MonoBehaviour:
   snapToStairsMaxYVel: 6.45
   shadowTransform: {fileID: 769951830}
   maxShadowCastDist: 2
-  horizontalCoords: {x: 0, y: 0}
+  horizontalPos: {x: 0, y: 0}
   horizontalVel: {x: 0, y: 0}
   height: 0
   verticalVelocity: 0
@@ -365,7 +365,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8116578794832190062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 1.25}
+  m_LocalPosition: {x: 0, y: 1, z: 2.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -492,6 +492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Blackboard for dependencies and state
   InputProvider: {fileID: 11400000, guid: 2bb928eea77c68d43bf71d37ca04ca86, type: 2}
+  gameState: {fileID: 11400000, guid: 512ab1ba90c8b5146963b220cf4791c8, type: 2}
   animator: {fileID: 1669601519}
   ProtagMover: {fileID: 1216729925}
   heightBody: {fileID: 8116578794953436582}
@@ -513,6 +514,7 @@ MonoBehaviour:
   basicAttackFinishTime: 0
   warpTravelTime: 0
   warpTarget: {x: 0, y: 0, z: 0}
+  recentAttacked: {fileID: 0}
 --- !u!114 &652174787
 MonoBehaviour:
   m_ObjectHideFlags: 0

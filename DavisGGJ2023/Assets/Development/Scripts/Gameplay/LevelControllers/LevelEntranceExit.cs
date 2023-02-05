@@ -8,6 +8,7 @@ public class LevelEntranceExit : MonoBehaviour
     [ColorHeader("Invoking", ColorHeaderColor.InvokingChannels)]
     [SerializeField] private LevelEntranceEventChannelSO askTravelLevels;
     [SerializeField] private StringEventChannelSO askStartDialogue;
+    [SerializeField] private InputModeEventChannelSO askSetInputMode;
 
     [ColorHeader("Listening", ColorHeaderColor.ListeningChannels)]
     [SerializeField] private LevelEntranceEventChannelSO askSpawnPlayer;
@@ -22,6 +23,7 @@ public class LevelEntranceExit : MonoBehaviour
     [SerializeField] private GameObject protagPrefab;
     [SerializeField] private LayerMask playerMask;
     [SerializeField] private string dialogueNodeWhenLeaveWithoutClearing;
+    [SerializeField] private string dialogueNodeWhenFirstTimeEntrance;
     
     private GameObject instance;
 
@@ -68,10 +70,19 @@ public class LevelEntranceExit : MonoBehaviour
         if (heightBody)
         {
             var position = transform.position;
-            heightBody.horizontalCoords = position - Vector3.up * position.z;
+            heightBody.horizontalPos = position - Vector3.up * position.z;
             heightBody.height = position.z;
         }
-
+        askSetInputMode.RaiseEvent(InputMode.Gameplay);
+        
+        string id = $"{name}{entrance}{exit}";
+        if (dialogueNodeWhenFirstTimeEntrance != ""
+            && !gameState.GetFlag(id))
+        {
+            gameState.SetFlag(id, true);
+            askStartDialogue.RaiseEvent(dialogueNodeWhenFirstTimeEntrance);
+        }
+        
         StartCoroutine(CoroutDebounceEnter());
     }
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Architecture/Blackboards/GameStateSO")]
@@ -27,25 +28,63 @@ public class GameStateSO : DescriptionBaseSO
     public int CurrentEnemyCount
     {
         get => currentEnemyCount;
-        set => currentEnemyCount = value;
+        set
+        {
+            currentEnemyCount = value;
+            currentEnemyCountDebug = value;
+        }
     }
 
-    public int StatuesDestroyed
+    public ProtagBlackboard ProtagBlackboard
     {
-        get => statuesDestroyed;
-        set => statuesDestroyed = value;
+        get => protagBlackboard;
+        set => protagBlackboard = value;
     }
 
-    [SerializeField, ReadOnly] private GameLevelSO currentlyLoadedLevel = null;
-    [SerializeField, ReadOnly] private LevelEntranceSO targetEntrance;
-    [SerializeField] private int currentEnemyCount;
-    [SerializeField] private int statuesDestroyed;
+    private GameLevelSO currentlyLoadedLevel = null;
+    private LevelEntranceSO targetEntrance = null;
+    private int currentEnemyCount;
+    private bool[] statuesDestroyed;
+    private ProtagBlackboard protagBlackboard;
     
     private HashSet<GameLevelSO> clearedRooms = new();
+
+    private Dictionary<string, bool> flags = new();
+
+    // Display
+    [ReadOnly] public int currentEnemyCountDebug;
+    [ReadOnly] public bool[] statuesDestroyedDebug;
 
     public bool IsCurrentLevelCleared()
     {
         return clearedRooms.Contains(currentlyLoadedLevel);
+    }
+
+    public bool GetFlag(string id)
+    {
+        if (flags.ContainsKey(id))
+            return flags[id];
+        else
+        {
+            return false;
+        }
+    }
+
+    public void SetFlag(string id, bool flag)
+    {
+        flags.TryAdd(id, flag);
+        flags[id] = flag;
+    }
+    
+    public void ResetValues()
+    {
+        targetEntrance = null;
+        currentlyLoadedLevel = null;
+        entryGameLevel = null;
+        CurrentEnemyCount = 0;
+        clearedRooms = new();
+        flags = new();
+        statuesDestroyed = null;
     }
 
     public void LevelCleared(GameLevelSO room)
@@ -53,13 +92,14 @@ public class GameStateSO : DescriptionBaseSO
         clearedRooms.Add(room);
     }
 
-    public void ResetValues()
+    public bool IsStatueDestroyed(int index)
     {
-        targetEntrance = null;
-        currentlyLoadedLevel = null;
-        entryGameLevel = null;
-        CurrentEnemyCount = 0;
-        StatuesDestroyed = 0;
-        clearedRooms = new();
+        return statuesDestroyed[index];
+    }
+
+    public void SetStatueDestroyed(int index, bool val)
+    {
+        statuesDestroyed[index] = val;
+        statuesDestroyedDebug = statuesDestroyed;
     }
 }

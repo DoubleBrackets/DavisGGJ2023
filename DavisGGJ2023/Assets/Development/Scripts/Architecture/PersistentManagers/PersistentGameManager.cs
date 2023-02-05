@@ -19,7 +19,6 @@ public class PersistentGameManager : DescriptionMonoBehavior
 
     private void OnDisable()
     {
-        
         gameState.ResetValues();
     }
 

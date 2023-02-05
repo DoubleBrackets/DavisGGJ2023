@@ -128,8 +128,8 @@ public class ProtagTransitions : TransitionTable<ProtagBlackboard>
         }
         else
         {
-            blackboard.recentlyHit = attackProfileSo;
-            blackboard.recentlyHitInfo = attackInfo;
+            blackboard.recentAttacked = attackProfileSo;
+            blackboard.recentAttackedInfo = attackInfo;
             context.ForceTransition(GetState<ProtagStaggered>());
         }
         return true;
