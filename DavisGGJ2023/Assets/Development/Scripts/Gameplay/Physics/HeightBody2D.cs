@@ -253,7 +253,7 @@ public class HeightBody2D : MonoBehaviour
         var casts = Physics2D.RaycastAll(
             testPoint,
             Vector2.down,
-            2 * heightStep,
+            0.25f,
             groundMask | hazardMask);
         
         foreach (var cast in casts)

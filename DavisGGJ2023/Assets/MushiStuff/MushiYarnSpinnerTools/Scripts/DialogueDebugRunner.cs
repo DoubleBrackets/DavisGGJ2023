@@ -9,7 +9,7 @@ public class DialogueDebugRunner : MonoBehaviour
 {
     [SerializeField] private TMP_InputField nodeNameInputField;
     [SerializeField] private StringEventChannelSO askStartDialogue;
-
+#if UNITY_EDITOR
     private void OnEnable()
     {
         nodeNameInputField.onSubmit.AddListener(RunDialogue);
@@ -24,4 +24,5 @@ public class DialogueDebugRunner : MonoBehaviour
     {
         askStartDialogue.RaiseEvent(nodeName);
     }
+#endif
 }
