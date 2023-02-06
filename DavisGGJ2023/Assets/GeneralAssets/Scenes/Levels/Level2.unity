@@ -9908,18 +9908,18 @@ PrefabInstance:
     - target: {fileID: 1159743369, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
       propertyPath: exit
       value: 
-      objectReference: {fileID: 11400000, guid: 571058d3154dcbc4f8c49e23876c8755, type: 2}
+      objectReference: {fileID: 11400000, guid: c1afce0c35f68405cb0dbe6388a9bc39, type: 2}
     - target: {fileID: 1159743369, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
       propertyPath: entrance
       value: 
-      objectReference: {fileID: 11400000, guid: 60e66a757c5bfef418ff65db9edabbb7, type: 2}
+      objectReference: {fileID: 11400000, guid: bb2b2980c3bab4ce49fa23a8eb3d0a60, type: 2}
     - target: {fileID: 8940716640837822157, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
       propertyPath: m_Name
       value: PlayerLeftEntrance
       objectReference: {fileID: 0}
     - target: {fileID: 8940716640837822157, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8940716640837822159, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
       propertyPath: m_RootOrder
@@ -9927,7 +9927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8940716640837822159, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.5
+      value: 15.99
       objectReference: {fileID: 0}
     - target: {fileID: 8940716640837822159, guid: 45bd0fa00fd801c429f89fe187cf0b4e, type: 3}
       propertyPath: m_LocalPosition.y
