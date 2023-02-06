@@ -945,7 +945,7 @@ MonoBehaviour:
   askLoadGameLevel: {fileID: 11400000, guid: b2c0da94ce7aadb4784f4bc2ee61e83c, type: 2}
   askLoadScene: {fileID: 11400000, guid: 5f55ebca5a72fdb4fa38e39d15a4f440, type: 2}
   gameState: {fileID: 11400000, guid: 512ab1ba90c8b5146963b220cf4791c8, type: 2}
-  defaultEntryLevel: {fileID: 11400000, guid: 7654af7e824c11b45845f08e50f7c523, type: 2}
+  defaultEntryLevel: {fileID: 11400000, guid: 78e00a169147f4cababd66f93a012b6e, type: 2}
 --- !u!4 &1809513812
 Transform:
   m_ObjectHideFlags: 0

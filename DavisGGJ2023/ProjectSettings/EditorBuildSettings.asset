@@ -14,13 +14,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/GeneralAssets/Scenes/TestingScenes/Second/TemplateTravelTest2.unity
     guid: 4789fe433eea32f4397be5ea58ba637e
-  - enabled: 1
+  - enabled: 0
     path: Assets/GeneralAssets/Scenes/TestingScenes/First/TemplateTravelTest.unity
     guid: ffbedbc13e0d72841907c7ddc5dff438
-  - enabled: 1
+  - enabled: 0
     path: Assets/GeneralAssets/Scenes/TestingScenes/Base/TestingLevel.unity
     guid: 9fb093024026f80428385bf774b8245b
   - enabled: 1
