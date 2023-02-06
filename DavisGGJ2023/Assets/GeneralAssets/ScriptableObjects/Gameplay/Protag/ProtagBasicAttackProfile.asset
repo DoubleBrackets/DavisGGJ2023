@@ -17,7 +17,7 @@ MonoBehaviour:
   knockbackStaggerDuration: 0.17
   damage: 0
   width: 2.5
-  height: 1.22
+  height: 1.5
   depth: 1
   attackFromEdge: 1
   hitMask:
