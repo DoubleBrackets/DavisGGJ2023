@@ -16,8 +16,8 @@ MonoBehaviour:
   verticalKnockbackVelocity: 0
   knockbackStaggerDuration: 0
   damage: 0
-  width: 1.5
-  height: 1.5
+  width: 2
+  height: 2
   depth: 1
   attackFromEdge: 0
   hitMask:

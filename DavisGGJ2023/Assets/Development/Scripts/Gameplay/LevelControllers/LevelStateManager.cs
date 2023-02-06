@@ -28,6 +28,7 @@ public class LevelStateManager : MonoBehaviour
 
     private void OnEnable()
     {
+        gameState.CurrentEnemyCount = 0;
         onLevelLoaded.OnRaised += Setup;
         askRestartLevel.OnRaised += RestartLevel;
         askTravelToNewLevel.OnRaised += TravelToNewLevel;

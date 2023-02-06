@@ -28,7 +28,7 @@ public class PersistentGameManager : DescriptionMonoBehavior
         {
             askLoadGameLevel.CallFunc(
                 defaultEntryLevel, 
-                TransitionEffect.None, 
+                TransitionEffect.FadeBlack, 
                 TransitionEffect.FadeBlack);
         }
         else
